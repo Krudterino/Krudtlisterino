@@ -1,0 +1,21 @@
+[
+    {
+        "name": "har_11953",
+        "price": 20,
+        "type": "Rocket",
+        "shop": "Shop 1",
+        "nem": 50,
+        "artikler": 5,
+        "image": "produktbilleder\har_11953.png"
+    },
+    {
+        "name": "har_11953",
+        "price": 25,
+        "type": "Fountain",
+        "shop": "Shop 2",
+        "nem": 30,
+        "artikler": 10,
+        "image": "produktbilleder\tha_25.png"
+    }
+    // Add more products...
+]

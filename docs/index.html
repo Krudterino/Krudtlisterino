@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Krudt Listen</title>
+    <title>Fireworks Shop</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to the Fireworks Shopping List Tool</h1>
-    <nav>
-        <a href="liste.html">Min Liste</a>
-    </nav>
-    <p>Use this tool to create a shopping list for your fireworks purchases.</p>
+    <div class="header">
+        <h1>Fireworks Shop</h1>
+        <a href="liste.html" class="min-liste-button">Min Liste</a>
+    </div>
+
+    <!-- Product Table -->
+    <div class="table-container">
+        <table id="product-table">
+            <thead>
+                <tr>
+                    <th></th> <!-- Image column with no title -->
+                    <th>
+                        Name
+                        <span class="sort-symbol" id="sort-name">⇅</span>
+                    </th>
+                    <th>
+                        Price
+                        <span class="sort-symbol" id="sort-price">⇅</span>
+                    </th>
+                    <th>
+                        Type
+                        <select id="sort-type">
+                            <option value="none">All Types</option>
+                        </select>
+                    </th>
+                    <th>
+                        Shop Name
+                        <select id="sort-shop">
+                            <option value="none">All Shops</option>
+                        </select>
+                    </th>
+                    <th>
+                        NEM
+                        <span class="sort-symbol" id="sort-nem">⇅</span>
+                    </th>
+                    <th>
+                        Artikler
+                        <span class="sort-symbol" id="sort-artikler">⇅</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="product-container"></tbody>
+        </table>
+    </div>
+
+    <div id="pagination-controls"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
