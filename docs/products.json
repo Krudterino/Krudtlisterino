@@ -6,7 +6,7 @@
         "shop": "Shop 1",
         "nem": 50,
         "artikler": 5,
-        "image": "produktbilleder\har_11953.png"
+        "image": "produktbilleder/har_11953.png"
     },
     {
         "name": "har_11953",
@@ -15,7 +15,7 @@
         "shop": "Shop 2",
         "nem": 30,
         "artikler": 10,
-        "image": "produktbilleder\tha_25.png"
+        "image": "produktbilleder/tha_25.png"
     }
     // Add more products...
 ]
