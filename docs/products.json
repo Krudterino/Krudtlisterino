@@ -1,20 +1,35 @@
 [
     {
-        "name": "har_11953",
-        "price": 20,
-        "type": "Rocket",
-        "shop": "Shop 1",
+        "id": 1,
+        "name": "Firework A",
+        "price": 150,
+        "type": "Raket",
+        "shop": "Harald",
         "nem": 50,
-        "artikler": 5,
-        "image": "produktbilleder/har_11953.png"
+        "artikler": 10,
+        "image": "images/firework-a.jpg",
+        "varenr": "12345"
     },
     {
-        "name": "har_11953",
-        "price": 25,
-        "type": "Fountain",
-        "shop": "Shop 2",
+        "id": 2,
+        "name": "Firework B",
+        "price": 80,
+        "type": "Fontæne",
+        "shop": "Harald",
         "nem": 30,
-        "artikler": 10,
-        "image": "produktbilleder/tha_25.png"
+        "artikler": 6,
+        "image": "images/firework-b.jpg",
+        "varenr": "67890"
+    },
+    {
+        "id": 3,
+        "name": "Firework C",
+        "price": 470,
+        "type": "Batteri",
+        "shop": "Thansen",
+        "nem": 620,
+        "artikler": 1,
+        "image": "images/firework-c.jpg",
+        "varenr": "42079"
     }
 ]

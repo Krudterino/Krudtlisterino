@@ -2,7 +2,21 @@
 fetch('products.json')
     .then(response => response.json())
     .then(products => {
-        let filteredProducts = [...products];
+        // Retrieve the saved list from localStorage
+        let selectedProductIds = JSON.parse(localStorage.getItem('selectedProducts')) || [];
+
+        // Retrieve saved quantities from localStorage
+        let savedQuantities = JSON.parse(localStorage.getItem('productQuantities')) || {};
+        let productQuantities = {};
+
+        // Filter the products to get only the ones in the user's list
+        let selectedProducts = products.filter(product => selectedProductIds.includes(product.id));
+        selectedProducts.forEach(product => {
+            // Initialize quantity to 1 if not saved
+            productQuantities[product.id] = savedQuantities[product.id] || 1;
+        });
+
+        let filteredProducts = [...selectedProducts];
         const productsPerPage = 50;
         let currentPage = 1;
         let sortOrder = {
@@ -11,55 +25,20 @@ fetch('products.json')
             artikler: null // Can be 'asc', 'desc', or null
         };
 
-        // Retrieve the saved list from localStorage
-        let selectedProducts = JSON.parse(localStorage.getItem('selectedProducts')) || [];
-
-        const productContainer = document.getElementById('product-container');
-        const paginationControls = document.getElementById('pagination-controls');
-
-        // Filtering Elements
+        const productContainer = document.getElementById('list-container');
         const searchNameInput = document.getElementById('search-name');
         const searchVarenrInput = document.getElementById('search-varenr');
-        const shopFiltersContainer = document.getElementById('shop-filters');
-        const typeFiltersContainer = document.getElementById('type-filters');
-
-        // Sort Symbols
         const sortPriceSymbol = document.getElementById('sort-price');
         const sortNemSymbol = document.getElementById('sort-nem');
         const sortArtiklerSymbol = document.getElementById('sort-artikler');
 
-        // Generate unique shop and type options
-        const shops = [...new Set(products.map(p => p.shop))];
-        const types = [...new Set(products.map(p => p.type))];
+        // Function to save quantities to localStorage
+        function saveQuantities() {
+            localStorage.setItem('productQuantities', JSON.stringify(productQuantities));
+        }
 
-        // Populate shop filter checkboxes
-        shops.forEach(shop => {
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.value = shop;
-            checkbox.classList.add('shop-filter');
-            const label = document.createElement('label');
-            label.textContent = shop;
-            shopFiltersContainer.appendChild(checkbox);
-            shopFiltersContainer.appendChild(label);
-            shopFiltersContainer.appendChild(document.createElement('br'));
-        });
-
-        // Populate type filter checkboxes
-        types.forEach(type => {
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.value = type;
-            checkbox.classList.add('type-filter');
-            const label = document.createElement('label');
-            label.textContent = type;
-            typeFiltersContainer.appendChild(checkbox);
-            typeFiltersContainer.appendChild(label);
-            typeFiltersContainer.appendChild(document.createElement('br'));
-        });
-
-        // Function to apply filters and sorting
-        function applyFiltersAndSorting() {
+        // Function to apply filters and search
+        function applyFiltersAndSearch() {
             const searchQuery = searchNameInput.value.toLowerCase();
             const searchVarenrQuery = searchVarenrInput.value.toLowerCase();
 
@@ -68,7 +47,7 @@ fetch('products.json')
             const selectedTypes = Array.from(document.querySelectorAll('.type-filter:checked')).map(cb => cb.value);
 
             // Filter products
-            filteredProducts = products.filter(product => {
+            filteredProducts = selectedProducts.filter(product => {
                 const matchesName = product.name.toLowerCase().includes(searchQuery);
                 const matchesVarenr = product.varenr.toLowerCase().includes(searchVarenrQuery);
                 const matchesShop = selectedShops.length === 0 || selectedShops.includes(product.shop);
@@ -76,7 +55,11 @@ fetch('products.json')
                 return matchesName && matchesVarenr && matchesShop && matchesType;
             });
 
-            // Apply sorting
+            applySorting(); // Apply sorting after filtering
+        }
+
+        // Function to apply sorting
+        function applySorting() {
             if (sortOrder.price) {
                 filteredProducts.sort((a, b) => sortOrder.price === 'asc' ? a.price - b.price : b.price - a.price);
             }
@@ -87,14 +70,14 @@ fetch('products.json')
                 filteredProducts.sort((a, b) => sortOrder.artikler === 'asc' ? a.artikler - b.artikler : b.artikler - a.artikler);
             }
 
-            // Display products
-            displayProducts(currentPage);
+            displayProducts();
+            calculateSums(); // Calculate sums after sorting and displaying
         }
 
         // Function to display products
-        function displayProducts(page) {
+        function displayProducts() {
             productContainer.innerHTML = '';
-            const start = (page - 1) * productsPerPage;
+            const start = (currentPage - 1) * productsPerPage;
             const end = start + productsPerPage;
             const productsToShow = filteredProducts.slice(start, end);
 
@@ -130,52 +113,64 @@ fetch('products.json')
                 typeCell.textContent = product.type;
                 row.appendChild(typeCell);
 
-                // Pris cell with suffix
+                // Pris cell with per item and total amount
                 const priceCell = document.createElement('td');
-                priceCell.textContent = `${product.price} DKK`;
+                const quantity = productQuantities[product.id];
+                const totalPrice = product.price * quantity;
+                priceCell.innerHTML = `${product.price} DKK` + (quantity > 1 ? `<br><span style="font-weight: bold;">(${totalPrice} DKK)</span>` : '');
                 row.appendChild(priceCell);
 
-                // NEM cell with suffix
+                // NEM cell with per item and total amount
                 const nemCell = document.createElement('td');
-                nemCell.textContent = `${product.nem} g`;
+                const totalNem = product.nem * quantity;
+                nemCell.innerHTML = `${product.nem} g` + (quantity > 1 ? `<br><span style="font-weight: bold;">(${totalNem} g)</span>` : '');
                 row.appendChild(nemCell);
 
-                // Artikler cell with suffix
+                // Artikler cell with per item and total amount
                 const artiklerCell = document.createElement('td');
-                artiklerCell.textContent = `${product.artikler} stk`;
+                const totalArtikler = product.artikler * quantity;
+                artiklerCell.innerHTML = `${product.artikler} stk` + (quantity > 1 ? `<br><span style="font-weight: bold;">(${totalArtikler} stk)</span>` : '');
                 row.appendChild(artiklerCell);
 
-                // Tilføj cell with "+" button
-                const addCell = document.createElement('td');
-                addCell.style.border = 'none'; // No border for this cell
-                const addButton = document.createElement('span');
-                addButton.textContent = '+';
-                addButton.style.fontWeight = 'bold';
-                addButton.style.cursor = 'pointer';
-                addButton.style.color = selectedProducts.includes(product.id) ? 'green' : 'black'; // Green if added
+                // Quantity cell
+                const quantityCell = document.createElement('td');
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.min = '1';
+                quantityInput.value = quantity;
+                quantityInput.style.width = '50px';
 
-                // Click event to add/remove product from the list
-                addButton.addEventListener('click', () => {
-                    if (selectedProducts.includes(product.id)) {
-                        // Remove product from the list
-                        selectedProducts = selectedProducts.filter(id => id !== product.id);
-                        addButton.style.color = 'black';
-                    } else {
-                        // Add product to the list
-                        selectedProducts.push(product.id);
-                        addButton.style.color = 'green';
-                    }
-                    // Save the updated list to localStorage
-                    localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
+                // Update quantity on change
+                quantityInput.addEventListener('input', () => {
+                    const newQuantity = Math.max(1, parseInt(quantityInput.value) || 1);
+                    productQuantities[product.id] = newQuantity;
+                    saveQuantities(); // Save updated quantities to localStorage
+                    applyFiltersAndSearch(); // Reapply filters to refresh the display
                 });
 
-                addCell.appendChild(addButton);
-                row.appendChild(addCell);
+                quantityCell.appendChild(quantityInput);
+                row.appendChild(quantityCell);
 
                 productContainer.appendChild(row);
             });
+        }
 
-            createPaginationControls();
+        // Function to calculate and display sums
+        function calculateSums() {
+            let totalPrice = 0;
+            let totalNem = 0;
+            let totalArtikler = 0;
+
+            filteredProducts.forEach(product => {
+                const quantity = productQuantities[product.id];
+                totalPrice += product.price * quantity;
+                totalNem += product.nem * quantity;
+                totalArtikler += product.artikler * quantity;
+            });
+
+            document.getElementById('sum-price').textContent = `${totalPrice} DKK`;
+            document.getElementById('sum-nem').textContent = `${totalNem} g`;
+            document.getElementById('sum-artikler').textContent = `${totalArtikler} stk`;
         }
 
         // Function to toggle sort order
@@ -196,19 +191,17 @@ fetch('products.json')
             if (key !== 'nem') sortNemSymbol.style.color = 'black';
             if (key !== 'artikler') sortArtiklerSymbol.style.color = 'black';
 
-            applyFiltersAndSorting();
+            applySorting();
         }
 
-        // Event listeners for filtering and sorting
-        searchNameInput.addEventListener('input', applyFiltersAndSorting);
-        searchVarenrInput.addEventListener('input', applyFiltersAndSorting);
-        shopFiltersContainer.addEventListener('change', applyFiltersAndSorting);
-        typeFiltersContainer.addEventListener('change', applyFiltersAndSorting);
+        // Event listeners for filtering and search
+        searchNameInput.addEventListener('input', applyFiltersAndSearch);
+        searchVarenrInput.addEventListener('input', applyFiltersAndSearch);
         sortPriceSymbol.addEventListener('click', () => toggleSortOrder(sortPriceSymbol, 'price'));
         sortNemSymbol.addEventListener('click', () => toggleSortOrder(sortNemSymbol, 'nem'));
         sortArtiklerSymbol.addEventListener('click', () => toggleSortOrder(sortArtiklerSymbol, 'artikler'));
 
         // Initial display
-        applyFiltersAndSorting();
+        applyFiltersAndSearch();
     })
     .catch(error => console.error('Error loading products:', error));

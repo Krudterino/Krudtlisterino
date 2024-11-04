@@ -6,8 +6,10 @@
 </head>
 <body>
     <div class="header">
-        <h1>Fireworks Shop</h1>
-        <a href="liste.html" class="min-liste-button">Min Liste</a>
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button active" id="katalog-button">Katalog</a>
+            <a href="liste.html" class="nav-button" id="min-liste-button">Min Liste</a>
+        </div>
     </div>
 
     <!-- Product Table -->
@@ -16,34 +18,14 @@
             <thead>
                 <tr>
                     <th></th> <!-- Image column with no title -->
-                    <th>
-                        Name
-                        <span class="sort-symbol" id="sort-name">⇅</span>
-                    </th>
-                    <th>
-                        Price
-                        <span class="sort-symbol" id="sort-price">⇅</span>
-                    </th>
-                    <th>
-                        Type
-                        <select id="sort-type">
-                            <option value="none">All Types</option>
-                        </select>
-                    </th>
-                    <th>
-                        Shop Name
-                        <select id="sort-shop">
-                            <option value="none">All Shops</option>
-                        </select>
-                    </th>
-                    <th>
-                        NEM
-                        <span class="sort-symbol" id="sort-nem">⇅</span>
-                    </th>
-                    <th>
-                        Artikler
-                        <span class="sort-symbol" id="sort-artikler">⇅</span>
-                    </th>
+                    <th>Vare Navn <input type="text" id="search-name" placeholder="Search by name"></th>
+                    <th>Varenr <input type="text" id="search-varenr" placeholder="Search by Vare Nr" class="small-input"></th>
+                    <th>Butik Navn <div class="dropdown"><button class="dropdown-button">Select Shops</button><div class="dropdown-content" id="shop-filters"></div></div></th>
+                    <th>Type <div class="dropdown"><button class="dropdown-button">Select Types</button><div class="dropdown-content" id="type-filters"></div></div></th>
+                    <th>Pris <span class="sort-symbol" id="sort-price">⇅</span></th>
+                    <th>NEM <span class="sort-symbol" id="sort-nem">⇅</span></th>
+                    <th>Artikler <span class="sort-symbol" id="sort-artikler">⇅</span></th>
+                    <th style="border: none;">Tilføj</th>
                 </tr>
             </thead>
             <tbody id="product-container"></tbody>

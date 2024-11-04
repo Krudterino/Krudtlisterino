@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Min Liste</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="nav-buttons">
+            <a href="index.html" class="nav-button" id="katalog-button">Katalog</a>
+            <a href="liste.html" class="nav-button active" id="min-liste-button">Min Liste</a>
+        </div>
+    </div>
+
+    <div class="table-container">
+        <table id="list-table">
+            <thead>
+                <tr>
+                    <th></th> <!-- Image column with no title -->
+                    <th>Vare Navn <input type="text" id="search-name" placeholder="Search by name"></th>
+                    <th>Varenr <input type="text" id="search-varenr" placeholder="Search by Vare Nr" class="small-input"></th>
+                    <th>Butik Navn <div class="dropdown"><button class="dropdown-button">Select Shops</button><div class="dropdown-content" id="shop-filters"></div></div></th>
+                    <th>Type <div class="dropdown"><button class="dropdown-button">Select Types</button><div class="dropdown-content" id="type-filters"></div></div></th>
+                    <th>Pris <span class="sort-symbol" id="sort-price">⇅</span></th>
+                    <th>NEM <span class="sort-symbol" id="sort-nem">⇅</span></th>
+                    <th>Artikler <span class="sort-symbol" id="sort-artikler">⇅</span></th>
+                </tr>
+            </thead>
+            <tbody id="list-container"></tbody>
+            <tfoot>
+                <tr style="height: 50px;"></tr> <!-- Empty row with 50px height -->
+                <tr>
+                    <td colspan="5" style="text-align: left; font-weight: bold;">SUM</td>
+                    <td id="sum-price" style="font-weight: bold;">0 DKK</td>
+                    <td id="sum-nem" style="font-weight: bold;">0 g</td>
+                    <td id="sum-artikler" style="font-weight: bold;">0 stk</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+
+    <script src="list.js"></script>
+</body>
+</html>

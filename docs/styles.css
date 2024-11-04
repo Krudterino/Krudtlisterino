@@ -7,27 +7,46 @@ body {
 
 .header {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 }
 
-h1 {
-    margin: 0;
+.nav-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center; /* Center the buttons */
 }
 
-.min-liste-button {
+.nav-button {
     text-decoration: none;
-    background-color: #007bff;
-    color: white;
-    padding: 10px 15px;
+    background-color: #ddd;
+    color: black;
+    padding: 10px 20px;
     border-radius: 5px;
     font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+    background-color: #ccc;
+}
+
+.nav-button.active {
+    background-color: #007bff;
+    color: white;
 }
 
 .table-container {
     margin: 0 auto;
-    width: 60%; /* 20% margin on each side for negative space */
+    width: 70%; /* 15% margin on each side for negative space */
+    text-align: left; /* Aligns the table content to the left */
+    white-space: nowrap; /* Prevents elements from wrapping onto the next line */
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
 }
 
 table {
@@ -39,6 +58,7 @@ th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
+    white-space: nowrap; /* Prevents text from wrapping in table cells */
 }
 
 th {
@@ -61,20 +81,59 @@ th {
     height: auto;
 }
 
-#pagination-controls button {
-    margin: 5px;
-    padding: 8px 12px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
+.small-input {
+    width: 50%; /* Adjust the width for a smaller input */
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap; /* Prevents dropdowns from wrapping */
+}
+
+.dropdown-button {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
     cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap; /* Prevents button text from wrapping */
 }
 
-#pagination-controls button.active {
-    background-color: #0056b3;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 1;
+    padding: 5px;
+    white-space: nowrap; /* Prevents content from wrapping */
 }
 
-#pagination-controls button:hover {
-    background-color: #0056b3;
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Ensure consistent image size */
+.product-image {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Makes the image a square */
+    margin-top: -4px;
+    margin-bottom: -6px;
+    margin-right: -6px;
+    margin-left: -4px;
+    object-fit: cover; /* Ensures the image fits within the square without distortion */
+}
+
+/* Aktiv1 / Aktiv 2 */
+.active-green {
+    background-color: green;
+    color: white;
+}
+
+.active-blue {
+    background-color: blue;
+    color: white;
 }
