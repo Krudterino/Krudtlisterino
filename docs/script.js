@@ -8,7 +8,8 @@ fetch('products.json')
         let sortOrder = {
             price: null, // Can be 'asc', 'desc', or null
             nem: null,   // Can be 'asc', 'desc', or null
-            artikler: null // Can be 'asc', 'desc', or null
+            artikler: null, // Can be 'asc', 'desc', or null
+            skud: null // New sort order for Skud
         };
 
         // Retrieve the saved list from localStorage
@@ -22,15 +23,18 @@ fetch('products.json')
         const searchVarenrInput = document.getElementById('search-varenr');
         const shopFiltersContainer = document.getElementById('shop-filters');
         const typeFiltersContainer = document.getElementById('type-filters');
+        const kaliberFiltersContainer = document.getElementById('kaliber-filters'); // Added Kaliber filter
 
         // Sort Symbols
         const sortPriceSymbol = document.getElementById('sort-price');
         const sortNemSymbol = document.getElementById('sort-nem');
         const sortArtiklerSymbol = document.getElementById('sort-artikler');
+        const sortSkudSymbol = document.getElementById('sort-skud'); // Added Skud sort symbol
 
-        // Generate unique shop and type options
+        // Generate unique shop, type, and kaliber options
         const shops = [...new Set(products.map(p => p.shop))];
         const types = [...new Set(products.map(p => p.type))];
+        const kalibers = [...new Set(products.map(p => p.kaliber))].sort((a, b) => a - b);
 
         // Populate shop filter checkboxes
         shops.forEach(shop => {
@@ -58,14 +62,28 @@ fetch('products.json')
             typeFiltersContainer.appendChild(document.createElement('br'));
         });
 
+        // Populate Kaliber filter checkboxes
+        kalibers.forEach(kaliber => {
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.value = kaliber;
+            checkbox.classList.add('kaliber-filter');
+            const label = document.createElement('label');
+            label.textContent = `Kaliber ${kaliber}`;
+            kaliberFiltersContainer.appendChild(checkbox);
+            kaliberFiltersContainer.appendChild(label);
+            kaliberFiltersContainer.appendChild(document.createElement('br'));
+        });
+
         // Function to apply filters and sorting
         function applyFiltersAndSorting() {
             const searchQuery = searchNameInput.value.toLowerCase();
             const searchVarenrQuery = searchVarenrInput.value.toLowerCase();
 
-            // Get selected shop and type filters
+            // Get selected shop, type, and kaliber filters
             const selectedShops = Array.from(document.querySelectorAll('.shop-filter:checked')).map(cb => cb.value);
             const selectedTypes = Array.from(document.querySelectorAll('.type-filter:checked')).map(cb => cb.value);
+            const selectedKalibers = Array.from(document.querySelectorAll('.kaliber-filter:checked')).map(cb => parseInt(cb.value));
 
             // Filter products
             filteredProducts = products.filter(product => {
@@ -73,7 +91,8 @@ fetch('products.json')
                 const matchesVarenr = product.varenr.toLowerCase().includes(searchVarenrQuery);
                 const matchesShop = selectedShops.length === 0 || selectedShops.includes(product.shop);
                 const matchesType = selectedTypes.length === 0 || selectedTypes.includes(product.type);
-                return matchesName && matchesVarenr && matchesShop && matchesType;
+                const matchesKaliber = selectedKalibers.length === 0 || selectedKalibers.includes(product.kaliber);
+                return matchesName && matchesVarenr && matchesShop && matchesType && matchesKaliber;
             });
 
             // Apply sorting
@@ -85,6 +104,9 @@ fetch('products.json')
             }
             if (sortOrder.artikler) {
                 filteredProducts.sort((a, b) => sortOrder.artikler === 'asc' ? a.artikler - b.artikler : b.artikler - a.artikler);
+            }
+            if (sortOrder.skud) { // Sorting for Skud
+                filteredProducts.sort((a, b) => sortOrder.skud === 'asc' ? a.skud - b.skud : b.skud - a.skud);
             }
 
             // Display products
@@ -100,7 +122,7 @@ fetch('products.json')
 
             productsToShow.forEach(product => {
                 const row = document.createElement('tr');
-
+            
                 // Image cell
                 const imageCell = document.createElement('td');
                 const img = document.createElement('img');
@@ -109,42 +131,52 @@ fetch('products.json')
                 img.classList.add('product-image');
                 imageCell.appendChild(img);
                 row.appendChild(imageCell);
-
+            
                 // Vare Navn cell
                 const nameCell = document.createElement('td');
                 nameCell.textContent = product.name;
                 row.appendChild(nameCell);
-
+            
                 // Varenr cell
                 const varenrCell = document.createElement('td');
                 varenrCell.textContent = product.varenr;
                 row.appendChild(varenrCell);
-
-                // Butik Navn cell
+            
+                // Distributør (Shop) cell
                 const shopCell = document.createElement('td');
                 shopCell.textContent = product.shop;
                 row.appendChild(shopCell);
-
+            
                 // Type cell
                 const typeCell = document.createElement('td');
                 typeCell.textContent = product.type;
                 row.appendChild(typeCell);
-
+            
+                // Kaliber cell
+                const kaliberCell = document.createElement('td');
+                kaliberCell.textContent = product.kaliber ? `${product.kaliber} mm` : 'N/A';
+                row.appendChild(kaliberCell);
+            
+                // Skud cell
+                const skudCell = document.createElement('td');
+                skudCell.textContent = product.skud;
+                row.appendChild(skudCell);
+            
                 // Pris cell with suffix
                 const priceCell = document.createElement('td');
                 priceCell.textContent = `${product.price} DKK`;
                 row.appendChild(priceCell);
-
+            
                 // NEM cell with suffix
                 const nemCell = document.createElement('td');
                 nemCell.textContent = `${product.nem} g`;
                 row.appendChild(nemCell);
-
+            
                 // Artikler cell with suffix
                 const artiklerCell = document.createElement('td');
                 artiklerCell.textContent = `${product.artikler} stk`;
                 row.appendChild(artiklerCell);
-
+            
                 // Tilføj cell with "+" button
                 const addCell = document.createElement('td');
                 addCell.style.border = 'none'; // No border for this cell
@@ -153,7 +185,7 @@ fetch('products.json')
                 addButton.style.fontWeight = 'bold';
                 addButton.style.cursor = 'pointer';
                 addButton.style.color = selectedProducts.includes(product.id) ? 'green' : 'black'; // Green if added
-
+            
                 // Click event to add/remove product from the list
                 addButton.addEventListener('click', () => {
                     if (selectedProducts.includes(product.id)) {
@@ -168,12 +200,13 @@ fetch('products.json')
                     // Save the updated list to localStorage
                     localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts));
                 });
-
+            
                 addCell.appendChild(addButton);
                 row.appendChild(addCell);
-
+            
                 productContainer.appendChild(row);
             });
+            
 
             createPaginationControls();
         }
@@ -195,6 +228,7 @@ fetch('products.json')
             if (key !== 'price') sortPriceSymbol.style.color = 'black';
             if (key !== 'nem') sortNemSymbol.style.color = 'black';
             if (key !== 'artikler') sortArtiklerSymbol.style.color = 'black';
+            if (key !== 'skud') sortSkudSymbol.style.color = 'black'; // Reset Skud color
 
             applyFiltersAndSorting();
         }
@@ -204,9 +238,11 @@ fetch('products.json')
         searchVarenrInput.addEventListener('input', applyFiltersAndSorting);
         shopFiltersContainer.addEventListener('change', applyFiltersAndSorting);
         typeFiltersContainer.addEventListener('change', applyFiltersAndSorting);
+        kaliberFiltersContainer.addEventListener('change', applyFiltersAndSorting); // Added Kaliber filter event
         sortPriceSymbol.addEventListener('click', () => toggleSortOrder(sortPriceSymbol, 'price'));
         sortNemSymbol.addEventListener('click', () => toggleSortOrder(sortNemSymbol, 'nem'));
         sortArtiklerSymbol.addEventListener('click', () => toggleSortOrder(sortArtiklerSymbol, 'artikler'));
+        sortSkudSymbol.addEventListener('click', () => toggleSortOrder(sortSkudSymbol, 'skud')); // Added Skud sort event
 
         // Initial display
         applyFiltersAndSorting();

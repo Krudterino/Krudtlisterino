@@ -126,9 +126,11 @@ fetch('products.json')
                 typeCell.textContent = product.type;
                 row.appendChild(typeCell);
 
+                // Price Cell
                 const priceCell = document.createElement('td');
                 const priceInputWrapper = document.createElement('div');
                 priceInputWrapper.classList.add('price-input-wrapper');
+                priceInputWrapper.style.textAlign = 'center';
 
                 const priceInput = document.createElement('input');
                 priceInput.type = 'number';
@@ -159,22 +161,48 @@ fetch('products.json')
 
                 if (productQuantities[product.id] > 1) {
                     const totalPrice = customPrices[product.id] * productQuantities[product.id];
-                    const totalPriceSpan = document.createElement('span');
-                    totalPriceSpan.textContent = ` (${totalPrice} DKK)`;
+                    const totalPriceSpan = document.createElement('div');
+                    totalPriceSpan.textContent = `(${totalPrice} DKK)`;
                     totalPriceSpan.style.fontWeight = 'normal';
-                    totalPriceSpan.style.float = 'right';
+                    totalPriceSpan.style.textAlign = 'center';
+                    totalPriceSpan.style.fontSize = 'smaller';
                     priceCell.appendChild(totalPriceSpan);
                 }
                 row.appendChild(priceCell);
 
+                // NEM Cell
                 const nemCell = document.createElement('td');
+                nemCell.style.textAlign = 'center';
                 nemCell.textContent = `${product.nem} g`;
+
+                if (productQuantities[product.id] > 1) {
+                    const totalNem = product.nem * productQuantities[product.id];
+                    const totalNemSpan = document.createElement('div');
+                    totalNemSpan.textContent = `(${totalNem} g)`;
+                    totalNemSpan.style.fontWeight = 'normal';
+                    totalNemSpan.style.textAlign = 'center';
+                    totalNemSpan.style.fontSize = 'smaller';
+                    nemCell.appendChild(totalNemSpan);
+                }
                 row.appendChild(nemCell);
 
+                // Artikler Cell
                 const artiklerCell = document.createElement('td');
+                artiklerCell.style.textAlign = 'center';
                 artiklerCell.textContent = `${product.artikler} stk`;
+
+                if (productQuantities[product.id] > 1) {
+                    const totalArtikler = product.artikler * productQuantities[product.id];
+                    const totalArtiklerSpan = document.createElement('div');
+                    totalArtiklerSpan.textContent = `(${totalArtikler} stk)`;
+                    totalArtiklerSpan.style.fontWeight = 'normal';
+                    totalArtiklerSpan.style.textAlign = 'center';
+                    totalArtiklerSpan.style.fontSize = 'smaller';
+                    artiklerCell.appendChild(totalArtiklerSpan);
+                }
                 row.appendChild(artiklerCell);
 
+                // Quantity Cell
                 const quantityCell = document.createElement('td');
                 const quantityInput = document.createElement('input');
                 quantityInput.type = 'number';
