@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Fireworks Shop</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,27 +15,45 @@
         </div>
     </div>
 
-    <!-- Product Table -->
     <div class="table-container">
         <table id="product-table">
             <thead>
                 <tr>
                     <th></th> <!-- Image column with no title -->
-                    <th>Vare Navn <input type="text" id="search-name" placeholder="Search by name"></th>
-                    <th>Varenr <input type="text" id="search-varenr" placeholder="Search by Vare Nr" class="small-input"></th>
-                    <th>Butik Navn <div class="dropdown"><button class="dropdown-button">Select Shops</button><div class="dropdown-content" id="shop-filters"></div></div></th>
-                    <th>Type <div class="dropdown"><button class="dropdown-button">Select Types</button><div class="dropdown-content" id="type-filters"></div></div></th>
-                    <th>Pris <span class="sort-symbol" id="sort-price">⇅</span></th>
-                    <th>NEM <span class="sort-symbol" id="sort-nem">⇅</span></th>
-                    <th>Artikler <span class="sort-symbol" id="sort-artikler">⇅</span></th>
-                    <th style="border: none;">Tilføj</th>
+                    <th class="name-cell">Vare Navn
+                        <input type="text" id="search-name" placeholder="Søg" class="search-input">
+                    </th>
+                    <th class="varenr-cell">Vare Nr
+                        <input type="text" id="search-varenr" placeholder="Søg" class="small-input search-input">
+                    </th>
+                    <th class="shop-cell">Distributør
+                        <div class="dropdown">
+                            <button class="dropdown-button">Vælg</button>
+                            <div class="dropdown-content" id="shop-filters"></div>
+                        </div>
+                    </th>
+                    <th class="type-cell">Type
+                        <div class="dropdown">
+                            <button class="dropdown-button">Vælg</button>
+                            <div class="dropdown-content" id="type-filters"></div>
+                        </div>
+                    </th>
+                    <th class="price-cell">Pris
+                        <span class="sort-symbol" id="sort-price">⇅</span>
+                    </th>
+                    <th class="nem-cell">NEM
+                        <span class="sort-symbol" id="sort-nem">⇅</span>
+                    </th>
+                    <th class="artikler-cell">Artikler
+                        <span class="sort-symbol" id="sort-artikler">⇅</span>
+                    </th>
                 </tr>
             </thead>
-            <tbody id="product-container"></tbody>
+            <tbody id="product-container">
+                <!-- Product rows will be dynamically added here by JavaScript -->
+            </tbody>
         </table>
     </div>
-
-    <div id="pagination-controls"></div>
 
     <script src="script.js"></script>
 </body>

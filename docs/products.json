@@ -7,6 +7,9 @@
         "shop": "Harald",
         "nem": 50,
         "artikler": 10,
+		"skud": 10,
+		"serie": 10,
+		"kaliber": 10,
         "image": "images/firework-a.jpg",
         "varenr": "12345"
     },

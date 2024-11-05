@@ -1,7 +1,7 @@
+/* General styling */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+    margin: 25px;
     text-align: center;
 }
 
@@ -14,8 +14,8 @@ body {
 
 .nav-buttons {
     display: flex;
-    gap: 20px;
-    justify-content: center; /* Center the buttons */
+    gap: 15px;
+    justify-content: center;
 }
 
 .nav-button {
@@ -37,16 +37,12 @@ body {
     color: white;
 }
 
+/* Table styling */
 .table-container {
     margin: 0 auto;
-    width: 70%; /* 15% margin on each side for negative space */
-    text-align: left; /* Aligns the table content to the left */
-    white-space: nowrap; /* Prevents elements from wrapping onto the next line */
-}
-
-h1 {
-    margin: 0;
-    font-size: 24px;
+    width: 80%;
+    text-align: left;
+    white-space: nowrap;
 }
 
 table {
@@ -56,9 +52,10 @@ table {
 
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 10px;
     text-align: left;
-    white-space: nowrap; /* Prevents text from wrapping in table cells */
+    vertical-align: middle;
+    white-space: nowrap;
 }
 
 th {
@@ -76,19 +73,77 @@ th {
     color: grey;
 }
 
+/* Image styling */
 .product-image {
     width: 50px;
-    height: auto;
+    height: 50px;
+    object-fit: cover;
+}
+
+/* Input styling for search inputs */
+.search-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 180px;
+    box-sizing: border-box;
 }
 
 .small-input {
-    width: 50%; /* Adjust the width for a smaller input */
+    width: 120px;
 }
 
+/* Styling for price and quantity inputs */
+.price-input-wrapper, .quantity-input-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.price-input, .quantity-input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100px; /* Fixed width for consistency */
+    box-sizing: border-box;
+}
+
+/* Remove up/down arrows for number inputs on price input */
+.price-input::-webkit-outer-spin-button,
+.price-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.price-input {
+    -moz-appearance: textfield; /* Remove arrows in Firefox */
+}
+
+.price-suffix {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 14px;
+}
+
+/* Styling for parentheses number */
+.parentheses-price {
+    margin-left: 5px;
+    font-size: 14px;
+    color: grey;
+}
+/* Style for custom price input */
+.custom-price {
+    font-style: italic;
+}
+/* Dropdown styling */
 .dropdown {
     position: relative;
     display: inline-block;
-    white-space: nowrap; /* Prevents dropdowns from wrapping */
 }
 
 .dropdown-button {
@@ -97,43 +152,30 @@ th {
     padding: 5px 10px;
     cursor: pointer;
     font-size: 14px;
-    white-space: nowrap; /* Prevents button text from wrapping */
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border: 1px solid #ddd;
     max-height: 150px;
     overflow-y: auto;
     z-index: 1;
     padding: 5px;
-    white-space: nowrap; /* Prevents content from wrapping */
 }
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* Ensure consistent image size */
-.product-image {
-    width: 50px; /* Adjust as needed */
-    height: 50px; /* Makes the image a square */
-    margin-top: -4px;
-    margin-bottom: -6px;
-    margin-right: -6px;
-    margin-left: -4px;
-    object-fit: cover; /* Ensures the image fits within the square without distortion */
-}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .table-container {
+        width: 100%;
+    }
 
-/* Aktiv1 / Aktiv 2 */
-.active-green {
-    background-color: green;
-    color: white;
-}
-
-.active-blue {
-    background-color: blue;
-    color: white;
+    th, td {
+        padding: 8px;
+    }
 }
