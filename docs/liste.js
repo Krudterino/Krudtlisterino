@@ -15,7 +15,7 @@ fetch('products.json')
         });
 
         let filteredProducts = [...selectedProducts];
-        let sortOrder = { price: null, nem: null, artikler: null };
+        let sortOrder = { price: null, nem: null, artikler: null, skud: null };
 
         const productContainer = document.getElementById('list-container');
         const searchNameInput = document.getElementById('search-name');
@@ -23,6 +23,7 @@ fetch('products.json')
         const sortPriceSymbol = document.getElementById('sort-price');
         const sortNemSymbol = document.getElementById('sort-nem');
         const sortArtiklerSymbol = document.getElementById('sort-artikler');
+        const sortSkudSymbol = document.getElementById('sort-skud');
         const shopFiltersContainer = document.getElementById('shop-filters');
         const typeFiltersContainer = document.getElementById('type-filters');
 
@@ -60,6 +61,7 @@ fetch('products.json')
         function saveData() {
             localStorage.setItem('productQuantities', JSON.stringify(productQuantities));
             localStorage.setItem('customPrices', JSON.stringify(customPrices));
+            localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts.map(product => product.id)));
         }
 
         function applyFiltersAndSearch() {
@@ -81,6 +83,9 @@ fetch('products.json')
         }
 
         function applySorting() {
+            if (sortOrder.skud) {
+                filteredProducts.sort((a, b) => sortOrder.skud === 'asc' ? a.skud - b.skud : b.skud - a.skud);
+            }
             if (sortOrder.price) {
                 filteredProducts.sort((a, b) => sortOrder.price === 'asc' ? customPrices[a.id] - customPrices[b.id] : customPrices[b.id] - customPrices[a.id]);
             }
@@ -126,6 +131,10 @@ fetch('products.json')
                 typeCell.textContent = product.type;
                 row.appendChild(typeCell);
 
+                const skudCell = document.createElement('td');
+                skudCell.textContent = product.skud;
+                row.appendChild(skudCell);
+
                 // Price Cell
                 const priceCell = document.createElement('td');
                 const priceInputWrapper = document.createElement('div');
@@ -138,16 +147,15 @@ fetch('products.json')
                 priceInput.value = customPrices[product.id];
                 priceInput.classList.add('price-input');
 
-                // Add custom-price class to italicize the custom price input value
                 if (customPrices[product.id] !== product.price) {
-                    priceInput.classList.add('custom-price'); // Apply italic class for custom prices
+                    priceInput.classList.add('custom-price');
                 }
 
                 priceInput.addEventListener('blur', () => {
                     const newPrice = parseFloat(priceInput.value) || 0;
                     customPrices[product.id] = newPrice > 0 ? newPrice : product.price;
                     saveData();
-                    displayProducts(); // Refresh to update total price in parentheses
+                    displayProducts();
                     calculateSums();
                 });
 
@@ -168,9 +176,9 @@ fetch('products.json')
                     totalPriceSpan.style.fontSize = 'smaller';
                     priceCell.appendChild(totalPriceSpan);
                 }
+
                 row.appendChild(priceCell);
 
-                // NEM Cell
                 const nemCell = document.createElement('td');
                 nemCell.style.textAlign = 'center';
                 nemCell.textContent = `${product.nem} g`;
@@ -186,7 +194,6 @@ fetch('products.json')
                 }
                 row.appendChild(nemCell);
 
-                // Artikler Cell
                 const artiklerCell = document.createElement('td');
                 artiklerCell.style.textAlign = 'center';
                 artiklerCell.textContent = `${product.artikler} stk`;
@@ -219,6 +226,23 @@ fetch('products.json')
                 quantityCell.appendChild(quantityInput);
                 row.appendChild(quantityCell);
 
+                // Remove button
+                const removeCell = document.createElement('td');
+                removeCell.style.border = 'none';
+                const removeButton = document.createElement('button');
+                removeButton.textContent = '-';
+                removeButton.classList.add('remove-btn');
+                removeButton.dataset.id = product.id;
+                removeButton.addEventListener('click', () => {
+                    selectedProducts = selectedProducts.filter(p => p.id !== product.id);
+                    filteredProducts = filteredProducts.filter(p => p.id !== product.id);
+                    saveData();
+                    displayProducts();
+                    calculateSums();
+                });
+                removeCell.appendChild(removeButton);
+                row.appendChild(removeCell);
+
                 productContainer.appendChild(row);
             });
         }
@@ -230,8 +254,7 @@ fetch('products.json')
 
             filteredProducts.forEach(product => {
                 const quantity = productQuantities[product.id];
-                const price = customPrices[product.id];
-                totalPrice += price * quantity;
+                totalPrice += customPrices[product.id] * quantity;
                 totalNem += product.nem * quantity;
                 totalArtikler += product.artikler * quantity;
             });
@@ -267,6 +290,7 @@ fetch('products.json')
         sortPriceSymbol.addEventListener('click', () => toggleSortOrder(sortPriceSymbol, 'price'));
         sortNemSymbol.addEventListener('click', () => toggleSortOrder(sortNemSymbol, 'nem'));
         sortArtiklerSymbol.addEventListener('click', () => toggleSortOrder(sortArtiklerSymbol, 'artikler'));
+        sortSkudSymbol.addEventListener('click', () => toggleSortOrder(sortSkudSymbol, 'skud'));
 
         applyFiltersAndSearch();
     })

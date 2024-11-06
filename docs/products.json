@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "name": "Firework A",
+        "name": "Dramatic",
         "serie": "Black And White",
         "price": 150,
         "type": "Raket",
@@ -9,13 +9,15 @@
         "nem": 50,
         "artikler": 10,
 		"skud": 1,
-		"kaliber": 20,
+		"kaliber": "20",
         "image": "images/firework-a.jpg",
+        "video": "https://www.youtube.com/watch?v=DzKv9Cq2Rq4",
+        "produktlink": "https://shop.worldoffireworks.dk/product/neon-fishes-fountain",
         "varenr": "12345"
     },
     {
         "id": 2,
-        "name": "Firework B",
+        "name": "SILVER GLITTERING WILLOW WITH SILVER BLINKING TAIL",
 		"serie": "Black And White",
         "price": 80,
         "type": "Fontæne",
@@ -23,13 +25,15 @@
         "nem": 30,
         "artikler": 6,
 		"skud": 1,
-		"kaliber": 30,
+		"kaliber": "25-30",
         "image": "images/firework-b.jpg",
+        "video": "https://www.youtube.com/watch?v=DzKv9Cq2Rq4",
+        "produktlink": "https://shop.worldoffireworks.dk/product/neon-fishes-fountain",
         "varenr": "67890"
     },
     {
         "id": 3,
-        "name": "Firework C",
+        "name": "Sandstorm",
 		"serie": "Black And White",
         "price": 470,
         "type": "Batteri",
@@ -37,8 +41,10 @@
         "nem": 620,
         "artikler": 1,
 		"skud": 45,
-		"kaliber": 30,
+		"kaliber": "30",
         "image": "images/firework-c.jpg",
+        "video": "https://www.youtube.com/watch?v=DzKv9Cq2Rq4",
+        "produktlink": "https://shop.worldoffireworks.dk/product/neon-fishes-fountain",
         "varenr": "42079"
     }
 ]

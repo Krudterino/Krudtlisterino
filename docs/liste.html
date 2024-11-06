@@ -20,7 +20,7 @@
             <thead>
                 <tr>
                     <th></th> <!-- Image column with no title -->
-                    <th class="name-cell">Vare Navn
+                    <th class="name-cell">Produkt Navn
                         <input type="text" id="search-name" placeholder="Søg" class="search-input">
                     </th>
                     <th class="varenr-cell">Vare Nr
@@ -38,6 +38,9 @@
                             <div class="dropdown-content" id="type-filters"></div>
                         </div>
                     </th>
+                    <th class="skud-cell">Skud
+                        <span class="sort-symbol" id="sort-skud">⇅</span>
+                    </th>
                     <th class="price-cell">Pris
                         <span class="sort-symbol" id="sort-price">⇅</span>
                     </th>
@@ -47,23 +50,25 @@
                     <th class="artikler-cell">Artikler
                         <span class="sort-symbol" id="sort-artikler">⇅</span>
                     </th>
+                    <th class="antal-cell">Antal</th> <!-- Quantity Column -->
                 </tr>
             </thead>
             <tbody id="list-container">
                 <!-- Product rows will be dynamically added here by JavaScript -->
             </tbody>
             <tfoot>
-                <tr style="height: 50px;"></tr> <!-- Empty row with 50px height -->
+                <tr style="height: 20px;"></tr> <!-- Empty row with 50px height -->
                 <tr>
-                    <td colspan="5" style="text-align: left; font-weight: bold;">SUM</td>
+                    <td colspan="6" style="text-align: left; font-weight: bold;">SUM</td>
                     <td id="sum-price" style="font-weight: bold;">0 DKK</td>
                     <td id="sum-nem" style="font-weight: bold;">0 g</td>
                     <td id="sum-artikler" style="font-weight: bold;">0 stk</td>
+                    <td colspan="1"></td>
                 </tr>
             </tfoot>
         </table>
     </div>
-
-    <script src="list.js"></script>
+    <script src="script.js"></script>
+    <script src="liste.js"></script>
 </body>
 </html>

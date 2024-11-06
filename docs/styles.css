@@ -50,16 +50,83 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
+/* Styling for table headers (th) */
+th {
     border: 1px solid #ddd;
     padding: 10px;
     text-align: left;
     vertical-align: middle;
-    white-space: nowrap;
+    white-space: nowrap; /* Prevents wrapping in headers */
 }
 
-th {
-    background-color: #f2f2f2;
+/* Styling for table cells (td) */
+/* Ensure cells are truncated by default */
+td {
+    border: 1px solid #ddd;
+    max-width: 200px; /* Adjust width as needed */
+    overflow: hidden; /* Hide overflowing content */
+    white-space: nowrap; /* Prevent wrapping */
+    text-overflow: ellipsis; /* Display "..." for overflowed text */
+    position: relative; /* For positioning during hover */
+    transition: all 0.2s ease; /* Smooth transition for hover */
+}
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    pointer-events: none; /* Tooltip should not block mouse events */
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+}
+
+th.name-cell {
+    background-color: #e8f5e9; /* Example for Name column */
+}
+/* Style all data cells (td) in the Name column */
+td:nth-child(2), /* 2nd column */
+th:nth-child(2) { /* Ensures the style applies to all rows in that column */
+    min-width: 100px; /* Adjust for content-specific size */
+    max-width: 300px;
+    overflow: hidden; /* Prevent overflow */
+    text-overflow: ellipsis; /* Show "..." for truncated content */
+    white-space: nowrap; /* Keep content on a single line */
+    position: relative; /* Required for tooltips */
+}
+
+th.varenr-cell {
+    background-color: #e3f2fd; /* Example for Varenr column */
+}
+
+th.shop-cell {
+    background-color: #ede7f6; /* Example for Shop column */
+}
+
+th.type-cell {
+    background-color: #e2ee76; /* Example for Shop column */
+}
+th.skud-cell {
+    background-color: #99f587; /* Example for Shop column */
+}
+th.nem-cell {
+    background-color: #eecc83; /* Example for Shop column */
+}
+th.price-cell {
+    background-color: #9beee0; /* Example for Shop column */
+}
+th.artikler-cell {
+    background-color: #af8dec; /* Example for Shop column */
+}
+th.antal-cell {
+    background-color: #9ae4d7; /* Example for Shop column */
+}
+th.kaliber-cell {
+    background-color: #9ae4b9; /* Example for Shop column */
 }
 
 .sort-symbol {
@@ -90,8 +157,9 @@ th {
     box-sizing: border-box;
 }
 
+/* Styling til varenr søgefelt */
 .small-input {
-    width: 120px;
+    width: 80px;
 }
 
 /* Styling for price and quantity inputs */
@@ -167,6 +235,42 @@ th {
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+.add-btn {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.add-btn:hover {
+    background-color: #02500f;
+    color: white;
+}
+.add-btn.selected {
+    background-color: rgb(231, 231, 231); /* Indicates selected product */
+    color: white;
+}
+.add-btn.selected:hover {
+    background-color: darkred; /* Indicates selected product */
+    color: white;
+}
+.remove-btn {
+    background-color: rgb(231, 231, 231);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 10px;
+}
+.remove-btn:hover {
+    background-color: darkred;
 }
 
 /* Responsive adjustments */
