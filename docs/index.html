@@ -19,7 +19,8 @@
         <table id="product-table">
             <thead>
                 <tr>
-                    <th></th> <!-- Image column with no title -->
+                    <th class="play-cell"></th> <!-- Play button column -->
+                    <th class="image-cell"></th> <!-- Image column with no title -->
                     <th class="name-cell">Produkt Navn
                         <input type="text" id="search-name" placeholder="Søg" class="search-input">
                     </th>
@@ -28,19 +29,25 @@
                     </th>
                     <th class="shop-cell">Distributør
                         <div class="dropdown">
-                            <button class="dropdown-button">Vælg</button>
+                            <button class="dropdown-button">
+                                <span class="dropdown-text">Vælg</span>
+                            </button>
                             <div class="dropdown-content" id="shop-filters"></div>
                         </div>
                     </th>
                     <th class="type-cell">Type
                         <div class="dropdown">
-                            <button class="dropdown-button">Vælg</button>
+                            <button class="dropdown-button">
+                                <span class="dropdown-text">Vælg</span>
+                            </button>
                             <div class="dropdown-content" id="type-filters"></div>
                         </div>
                     </th>
                     <th class="kaliber-cell">Kaliber
                         <div class="dropdown">
-                            <button class="dropdown-button">Vælg</button>
+                            <button class="dropdown-button">
+                                <span class="dropdown-text">Vælg</span>
+                            </button>
                             <div class="dropdown-content" id="kaliber-filters"></div>
                         </div>
                     </th>
@@ -63,7 +70,15 @@
             </tbody>
         </table>
     </div>
+    <div id="video-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-modal">&times;</span>
+            <div id="video-container"></div>
+        </div>
+    </div>    
+    
     <script src="script.js"></script>
     <script src="index.js"></script>
+    
 </body>
 </html>

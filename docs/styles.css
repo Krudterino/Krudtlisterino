@@ -63,7 +63,7 @@ th {
 /* Ensure cells are truncated by default */
 td {
     border: 1px solid #ddd;
-    max-width: 200px; /* Adjust width as needed */
+    max-width: 100px; /* Adjust width as needed */
     overflow: hidden; /* Hide overflowing content */
     white-space: nowrap; /* Prevent wrapping */
     text-overflow: ellipsis; /* Display "..." for overflowed text */
@@ -84,15 +84,23 @@ td {
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
 }
-
+th.play-cell {
+    border:none;
+}
+td.play-button-cell {
+    border:none;
+}
+th.image-cell {
+    border:none;
+}
 th.name-cell {
     background-color: #e8f5e9; /* Example for Name column */
+    max-width: 180px;
 }
+
 /* Style all data cells (td) in the Name column */
 td:nth-child(2), /* 2nd column */
 th:nth-child(2) { /* Ensures the style applies to all rows in that column */
-    min-width: 100px; /* Adjust for content-specific size */
-    max-width: 300px;
     overflow: hidden; /* Prevent overflow */
     text-overflow: ellipsis; /* Show "..." for truncated content */
     white-space: nowrap; /* Keep content on a single line */
@@ -100,33 +108,42 @@ th:nth-child(2) { /* Ensures the style applies to all rows in that column */
 }
 
 th.varenr-cell {
-    background-color: #e3f2fd; /* Example for Varenr column */
+    background-color: #e8f1f8; /* Example for Varenr column */
+    max-width: 95px;
 }
 
 th.shop-cell {
-    background-color: #ede7f6; /* Example for Shop column */
+    background-color: #f1edf7; /* Example for Shop column */
+    max-width: 95px;
 }
 
 th.type-cell {
-    background-color: #e2ee76; /* Example for Shop column */
-}
-th.skud-cell {
-    background-color: #99f587; /* Example for Shop column */
-}
-th.nem-cell {
-    background-color: #eecc83; /* Example for Shop column */
-}
-th.price-cell {
-    background-color: #9beee0; /* Example for Shop column */
-}
-th.artikler-cell {
-    background-color: #af8dec; /* Example for Shop column */
-}
-th.antal-cell {
-    background-color: #9ae4d7; /* Example for Shop column */
+    background-color: #f9fce1; /* Example for Shop column */
+    max-width: 75px;
 }
 th.kaliber-cell {
-    background-color: #9ae4b9; /* Example for Shop column */
+    background-color: #e4f7ec; /* Example for Shop column */
+    max-width: 80px;
+}
+th.skud-cell {
+    background-color: #e9fce5; /* Example for Shop column */
+    max-width: 50px;
+}
+th.nem-cell {
+    background-color: #fcf5e5; /* Example for Shop column */
+    max-width: 95px;
+}
+th.price-cell {
+    background-color: #effcfa; /* Example for Shop column */
+    max-width: 60px;
+}
+th.artikler-cell {
+    background-color: #efe6ff; /* Example for Shop column */
+    max-width: 95px;
+}
+th.antal-cell {
+    background-color: #eefcf9; /* Example for Shop column */
+    max-width: 20px;
 }
 
 .sort-symbol {
@@ -144,28 +161,41 @@ th.kaliber-cell {
 .product-image {
     width: 50px;
     height: 50px;
-    object-fit: cover;
 }
 
 /* Input styling for search inputs */
-.search-input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    width: 180px;
+
+.price-input-wrapper {
+    width: 100%; /* Make wrapper take up the full width of the cell */
+    display: flex;
+    justify-content: center; /* Adjust alignment of content inside */
+    align-items: center;
     box-sizing: border-box;
+}
+
+.price-input-wrapper input {
+    width: calc(100% - 10px); /* Adjust input width to make room for the suffix */
+    text-align: center;
+    box-sizing: border-box; /* Makes padding count towards width */
+}
+.price-suffix {
+    position: absolute;
+    padding-right: 5%;
+    pointer-events: none; /* Prevent interaction with the suffix */
+    font-size: 14px; /* Match the input text size */
+    color: #555; /* Match or customize color */
 }
 
 /* Styling til varenr søgefelt */
 .small-input {
-    width: 80px;
+    width: 60px;
 }
 
 /* Styling for price and quantity inputs */
 .price-input-wrapper, .quantity-input-wrapper {
     display: inline-flex;
     align-items: center;
+    align: center;
     position: relative;
 }
 
@@ -174,7 +204,7 @@ th.kaliber-cell {
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-    width: 100px; /* Fixed width for consistency */
+    width: 60px; /* Fixed width for consistency */
     box-sizing: border-box;
 }
 
@@ -184,7 +214,6 @@ th.kaliber-cell {
     -webkit-appearance: none;
     margin: 0;
 }
-
 .price-input {
     -moz-appearance: textfield; /* Remove arrows in Firefox */
 }
@@ -195,18 +224,34 @@ th.kaliber-cell {
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 /* Styling for parentheses number */
 .parentheses-price {
     margin-left: 5px;
-    font-size: 14px;
+    font-size: 12px;
     color: grey;
 }
 /* Style for custom price input */
 .custom-price {
     font-style: italic;
+}
+.search-input-wrapper {
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;      /* Centers vertically */
+    width: 100%;              /* Takes the full width of the container */
+    margin: 10px 0;           /* Optional margin for spacing */
+}
+
+.search-input {
+    text-align: center;       /* Align text within the input field */
+    width: 50%;               /* Set width for the input itself, can be adjusted as needed */
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #fff7c7;
+    border: 1px solid #f1bd81;
 }
 /* Dropdown styling */
 .dropdown {
@@ -215,24 +260,26 @@ th.kaliber-cell {
 }
 
 .dropdown-button {
-    background-color: #f2f2f2;
-    border: 1px solid #ddd;
+    background-color: #fff7c7;
+    border: 1px solid #f1bd81;
     padding: 5px 10px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #ffffff;
+    background-color: #fff7c7;
     border: 1px solid #ddd;
     max-height: 150px;
     overflow-y: auto;
     z-index: 1;
     padding: 5px;
 }
-
+.dropdown-text {
+    opacity: 50%;
+}
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -271,6 +318,81 @@ th.kaliber-cell {
 }
 .remove-btn:hover {
     background-color: darkred;
+}
+.play-button-cell {
+    width: 60px; /* Adjust as needed for button size */
+    text-align: center;
+}
+
+.play-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.play-btn:hover {
+    background-color: #0056b3;
+}
+/* Modal container - youtube */
+.modal {
+    padding-top: 5%;
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal content  - youtube */
+.modal-content {
+    position: relative;
+    margin: auto;
+    background: none;
+    width: 1120px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Close button  - youtube */
+.close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #b9b9b9;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: rgb(228, 228, 228);
+}
+
+.product-image {
+    transition: transform 0.3s ease-in-out, position 0.3s ease-in-out;
+    cursor: pointer; /* Indicates image is clickable */
+}
+
+/* The hover effect should ensure the image stands out */
+.product-image:hover {
+    z-index: 1000; /* Bring enlarged image to the top layer */
+    pointer-events: auto; /* Ensures the image remains interactive */
+}
+.enlarged-image {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive adjustments */

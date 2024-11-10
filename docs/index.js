@@ -133,15 +133,35 @@ fetch('products.json')
 
             productsToShow.forEach(product => {
                 const row = document.createElement('tr');
+                
+              // Play button cell
+              const playButtonCell = document.createElement('td');
+              playButtonCell.classList.add('play-button-cell');
+              const playButton = document.createElement('button');
+              playButton.classList.add('play-btn');
+              playButton.textContent = '▶';
+              playButton.onclick = () => {
+                if (product.video) {
+                    showVideoModal(product.video);
+                } else {
+                    console.error('No video link found for this product.');
+                }
+            };
             
+              playButtonCell.appendChild(playButton);
+              row.appendChild(playButtonCell);  
+              
+              
                 // Image cell
                 const imageCell = document.createElement('td');
                 const img = document.createElement('img');
                 img.src = product.image;
                 img.alt = product.name;
                 img.classList.add('product-image');
+                img.dataset.productId = product.id;  // Assign the product ID
                 imageCell.appendChild(img);
                 row.appendChild(imageCell);
+
             
                 // Vare Navn cell
                 const nameCell = document.createElement('td');
