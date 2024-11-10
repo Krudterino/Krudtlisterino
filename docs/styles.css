@@ -33,7 +33,7 @@ body {
 }
 
 .nav-button.active {
-    background-color: #007bff;
+    background-color: #F7A60C;
     color: white;
 }
 
@@ -43,39 +43,50 @@ body {
     width: 80%;
     text-align: left;
     white-space: nowrap;
+    overflow-y: auto;
+    max-height: 80vh; /* Adjust as needed */
+    margin-bottom: 10px;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0; /* Prevents gaps between cells */
+    table-layout: fixed; /* Ensures consistent column widths */
+    margin: 15px;
 }
-
 /* Styling for table headers (th) */
 th {
-    border: 1px solid #ddd;
+    border: 4px solid #ddd;
     padding: 10px;
     text-align: left;
     vertical-align: middle;
     white-space: nowrap; /* Prevents wrapping in headers */
+    margin: 0;
+    box-sizing: border-box;
+    position: sticky; /* Freeze the header */
+    top: 0; /* Keeps it at the top when scrolling */
+    z-index: 500; /* Ensure it's above other content */
 }
 
 /* Styling for table cells (td) */
 /* Ensure cells are truncated by default */
 td {
     border: 1px solid #ddd;
+    border-bottom: 2px solid #ddd;
     max-width: 100px; /* Adjust width as needed */
     overflow: hidden; /* Hide overflowing content */
     white-space: nowrap; /* Prevent wrapping */
     text-overflow: ellipsis; /* Display "..." for overflowed text */
     position: relative; /* For positioning during hover */
     transition: all 0.2s ease; /* Smooth transition for hover */
+    
 }
 .tooltip {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.85);
     color: white;
     padding: 5px 10px;
-    border-radius: 4px;
+    border-radius: 2px;
     font-size: 12px;
     white-space: nowrap;
     pointer-events: none; /* Tooltip should not block mouse events */
@@ -84,68 +95,118 @@ td {
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
 }
+.play-button-cell {
+    width: 60px; /* Adjust as needed for button size */
+    text-align: center;
+}
+
+.play-btn {
+    background-color: #FF0000;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.play-btn:hover {
+    background-color: #F7A60C;
+}
 th.play-cell {
     border:none;
+    background: white;
 }
 td.play-button-cell {
     border:none;
 }
-th.image-cell {
-    border:none;
+.product-image {
+    width: 100%;
+    height: 100%;
+    width: 55px;
+    height: 55px;
+    object-fit: cover; /* Ensure the image covers the cell without distortion */
+    display: block; /* Removes inline block spacing */
+    transition: transform 0.3s ease-in-out, position 0.3s ease-in-out;
+    cursor: pointer; /* Indicates image is clickable */
+/*    border-inline: 5px solid red;*/
 }
-th.name-cell {
-    background-color: #e8f5e9; /* Example for Name column */
-    max-width: 180px;
+td.image-cell {
+    width: 55px;
+    padding: 0; /* Ensure no extra spacing */
+    box-sizing: border-box; /* Include padding/border within width/height */
+}
+th.image-cell {
+    border: none;
+    background: white;
+}
+/* The hover effect should ensure the image stands out */
+.product-image:hover {
+    z-index: 1000; /* Bring enlarged image to the top layer */
+    pointer-events: auto; /* Ensures the image remains interactive */
+}
+.enlarged-image {
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    transform-origin: top left; /* Makes the image enlarge from its original position */
 }
 
-/* Style all data cells (td) in the Name column */
-td:nth-child(2), /* 2nd column */
-th:nth-child(2) { /* Ensures the style applies to all rows in that column */
-    overflow: hidden; /* Prevent overflow */
-    text-overflow: ellipsis; /* Show "..." for truncated content */
-    white-space: nowrap; /* Keep content on a single line */
-    position: relative; /* Required for tooltips */
+th.name-cell {
+    background-color: #ece8f1; /* Example for Name column */
+    min-width: 250px;
+    max-width: 800px;
+    text-align: center;
 }
 
 th.varenr-cell {
-    background-color: #e8f1f8; /* Example for Varenr column */
-    max-width: 95px;
+    background-color: #ece8f1; /* Example for Varenr column */
+    width: 150px;
+    text-align: center;
 }
 
 th.shop-cell {
-    background-color: #f1edf7; /* Example for Shop column */
-    max-width: 95px;
+    background-color: #ece8f1; /* Example for Shop column */
+    width: 250px;
+    text-align: center;
 }
 
 th.type-cell {
-    background-color: #f9fce1; /* Example for Shop column */
-    max-width: 75px;
+    background-color: #ece8f1; /* Example for Shop column */
+    width: 120px;
+    text-align: center;
 }
 th.kaliber-cell {
-    background-color: #e4f7ec; /* Example for Shop column */
-    max-width: 80px;
+    background-color: #ece8f1; /* Example for Shop column */
+    width: 120px;
+    text-align: center;
 }
 th.skud-cell {
-    background-color: #e9fce5; /* Example for Shop column */
-    max-width: 50px;
+    background-color: #ece8f1; /* Example for Shop column */
+    width: 80px;
+    text-align: center;
 }
 th.nem-cell {
-    background-color: #fcf5e5; /* Example for Shop column */
-    max-width: 95px;
+    background-color: #ece8f1; /* Example for Shop column */
+    width: 120px;
+    text-align: center;
 }
 th.price-cell {
-    background-color: #effcfa; /* Example for Shop column */
-    max-width: 60px;
+    background-color: #ece8f1; /* Example for Shop column */
+    width: 150px;
+    text-align: center;
 }
 th.artikler-cell {
-    background-color: #efe6ff; /* Example for Shop column */
-    max-width: 95px;
+    background-color: #ece8f1; /* Example for Shop column */
+    width: 80px;
+    text-align: center;
 }
 th.antal-cell {
-    background-color: #eefcf9; /* Example for Shop column */
-    max-width: 20px;
+    background-color: #ece8f1; /* Example for Shop column */
+    width: 80px;
+    text-align: center;
 }
-
+th.add-cell {
+    border:none;
+    background: white;
+}
 .sort-symbol {
     cursor: pointer;
     color: black;
@@ -155,12 +216,6 @@ th.antal-cell {
 
 .sort-symbol:hover {
     color: grey;
-}
-
-/* Image styling */
-.product-image {
-    width: 50px;
-    height: 50px;
 }
 
 /* Input styling for search inputs */
@@ -185,12 +240,30 @@ th.antal-cell {
     font-size: 14px; /* Match the input text size */
     color: #555; /* Match or customize color */
 }
+.search-input-wrapper {
+    display: flex;
+    justify-content: center;  /* Centers horizontally */
+    align-items: center;      /* Centers vertically */
+    width: 100%;              /* Takes the full width of the container */
+    margin: 10px 0;           /* Optional margin for spacing */
+}
 
+.search-input {
+    text-align: center;       /* Align text within the input field */
+    width: 120px;               /* Set width for the input itself, can be adjusted as needed */
+    padding: 5px;
+    box-sizing: border-box;
+    background-color: #fff7c7;
+    border: 1px solid #F7A60C;
+}
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 5px #F7A60C; /* Add a glow effect */
+}
 /* Styling til varenr søgefelt */
 .small-input {
     width: 60px;
 }
-
 /* Styling for price and quantity inputs */
 .price-input-wrapper, .quantity-input-wrapper {
     display: inline-flex;
@@ -237,22 +310,6 @@ th.antal-cell {
 .custom-price {
     font-style: italic;
 }
-.search-input-wrapper {
-    display: flex;
-    justify-content: center;  /* Centers horizontally */
-    align-items: center;      /* Centers vertically */
-    width: 100%;              /* Takes the full width of the container */
-    margin: 10px 0;           /* Optional margin for spacing */
-}
-
-.search-input {
-    text-align: center;       /* Align text within the input field */
-    width: 50%;               /* Set width for the input itself, can be adjusted as needed */
-    padding: 5px;
-    box-sizing: border-box;
-    background-color: #fff7c7;
-    border: 1px solid #f1bd81;
-}
 /* Dropdown styling */
 .dropdown {
     position: relative;
@@ -261,7 +318,7 @@ th.antal-cell {
 
 .dropdown-button {
     background-color: #fff7c7;
-    border: 1px solid #f1bd81;
+    border: 1px solid #F7A60C;
     padding: 5px 10px;
     cursor: pointer;
     font-size: 12px;
@@ -284,9 +341,10 @@ th.antal-cell {
     display: block;
 }
 .add-btn {
-    background-color: green;
+    background-color: #F7A60C;
     color: white;
     border: none;
+    margin-left: 5px;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 4px;
@@ -295,7 +353,7 @@ th.antal-cell {
 }
 
 .add-btn:hover {
-    background-color: #02500f;
+    background-color: #ffdb3c;
     color: white;
 }
 .add-btn.selected {
@@ -318,23 +376,6 @@ th.antal-cell {
 }
 .remove-btn:hover {
     background-color: darkred;
-}
-.play-button-cell {
-    width: 60px; /* Adjust as needed for button size */
-    text-align: center;
-}
-
-.play-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-}
-
-.play-btn:hover {
-    background-color: #0056b3;
 }
 /* Modal container - youtube */
 .modal {
@@ -381,19 +422,87 @@ th.antal-cell {
     color: rgb(228, 228, 228);
 }
 
-.product-image {
-    transition: transform 0.3s ease-in-out, position 0.3s ease-in-out;
-    cursor: pointer; /* Indicates image is clickable */
+#product-container td:nth-child(3) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    font-weight: bold;
+}
+#product-container td:nth-child(4) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+    color: rgb(104, 104, 104);
+}
+#product-container td:nth-child(5) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#product-container td:nth-child(6) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#product-container td:nth-child(7) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#product-container td:nth-child(8) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#product-container td:nth-child(9) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: right;
+}
+#product-container td:nth-child(10) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#product-container td:nth-child(11) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
 }
 
-/* The hover effect should ensure the image stands out */
-.product-image:hover {
-    z-index: 1000; /* Bring enlarged image to the top layer */
-    pointer-events: auto; /* Ensures the image remains interactive */
+
+
+
+
+#list-container td:nth-child(3) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    font-weight: bold;
 }
-.enlarged-image {
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+#list-container td:nth-child(4) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+    color: rgb(104, 104, 104);
 }
+#list-container td:nth-child(5) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#list-container td:nth-child(6) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#list-container td:nth-child(7) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#list-container td:nth-child(8) {
+    padding: 0px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#list-container td:nth-child(9) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#list-container td:nth-child(10) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+#list-container td:nth-child(11) {
+    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    text-align: center;
+}
+
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

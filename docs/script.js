@@ -130,53 +130,60 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Function to add click and hover events to product images
 function observeProductImages() {
     const productImages = document.querySelectorAll('.product-image');
 
     productImages.forEach((img) => {
-        // Check if event listeners have already been attached to avoid duplication
         if (!img.dataset.eventsAttached) {
-            // Add click event to open product link
+            // Open product link on click
             img.addEventListener('click', () => {
-                const productId = img.dataset.productId; // Get the product ID from dataset
-                const product = products.find((p) => p.id == productId); // Find the product using the ID
-                if (product && product.produktlink) {
+                const productId = img.dataset.productId;
+                const product = products.find((p) => p.id == productId);
+                if (product?.produktlink) {
                     window.open(product.produktlink, '_blank');
                 } else {
                     console.error('Product link not found for this image.');
                 }
             });
 
-            // Add hover effect for image enlargement
+            // Image enlargement logic on hover
             let hoverTimeout;
+            let enlargedImg;
+
             img.addEventListener('mouseenter', () => {
                 hoverTimeout = setTimeout(() => {
-                    const enlargedImg = img.cloneNode(true); // Create a copy of the image
-                    enlargedImg.style.transform = 'scale(5)';
-                    enlargedImg.style.position = 'absolute';
-                    enlargedImg.style.zIndex = '1000';
-                    enlargedImg.style.transition = 'transform 0.3s ease-in-out';
-                    enlargedImg.style.pointerEvents = 'none';
-                    enlargedImg.style.top = `${img.getBoundingClientRect().top}px`;
-                    enlargedImg.style.left = `${img.getBoundingClientRect().left}px`;
-                    enlargedImg.classList.add('enlarged-image');
-                    document.body.appendChild(enlargedImg); // Add the enlarged image to the body
+                    const rect = img.getBoundingClientRect();
+                    enlargedImg = img.cloneNode(true);
+                    
+                    // Style for enlarged image
+                    Object.assign(enlargedImg.style, {
+                        transform: 'scale(5)',
+                        position: 'absolute',
+                        zIndex: '1000',
+                        transition: 'transform 0.3s ease-in-out',
+                        pointerEvents: 'none',
+                        top: `${rect.top + window.scrollY}px`, // Adjust for vertical scroll
+                        left: `${rect.left + window.scrollX}px`, // Adjust for horizontal scroll
+                        width: `${rect.width}px`,  // Ensure original size consistency
+                        height: `${rect.height}px`
+                    });
 
-                    img.dataset.enlargedImageId = enlargedImg.dataset.enlargedImageId = `enlarged-${img.dataset.productId}`;
-                }, 300); // Delay of 0.3 seconds
+                    enlargedImg.classList.add('enlarged-image');
+                    document.body.appendChild(enlargedImg);
+
+                    img.dataset.enlargedImageId = `enlarged-${img.dataset.productId}`;
+                    enlargedImg.dataset.enlargedImageId = `enlarged-${img.dataset.productId}`;
+                }, 300); // Delay for smooth hover effect
             });
 
             img.addEventListener('mouseleave', () => {
                 clearTimeout(hoverTimeout);
-                const enlargedImageId = img.dataset.enlargedImageId;
-                const enlargedImg = document.querySelector(`.enlarged-image[data-enlarged-image-id='${enlargedImageId}']`);
                 if (enlargedImg) {
-                    enlargedImg.remove(); // Remove the enlarged image when mouse leaves
+                    enlargedImg.remove(); // Ensure enlarged image cleanup
                 }
             });
 
-            img.dataset.eventsAttached = 'true'; // Mark that event listeners are attached
+            img.dataset.eventsAttached = 'true'; // Avoid duplicate listeners
         }
     });
 }

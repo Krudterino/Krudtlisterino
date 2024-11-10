@@ -134,24 +134,25 @@ fetch('products.json')
             productsToShow.forEach(product => {
                 const row = document.createElement('tr');
                 
-              // Play button cell
-              const playButtonCell = document.createElement('td');
-              playButtonCell.classList.add('play-button-cell');
-              const playButton = document.createElement('button');
-              playButton.classList.add('play-btn');
-              playButton.textContent = '▶';
-              playButton.onclick = () => {
-                if (product.video) {
-                    showVideoModal(product.video);
-                } else {
-                    console.error('No video link found for this product.');
-                }
-            };
-            
-              playButtonCell.appendChild(playButton);
-              row.appendChild(playButtonCell);  
-              
-              
+// Play button cell
+const playButtonCell = document.createElement('td');
+playButtonCell.classList.add('play-button-cell');
+
+// Check if the product has a valid video link
+if (product.video && product.video !== "x" && product.video.trim() !== "") {
+    const playButton = document.createElement('button');
+    playButton.classList.add('play-btn');
+    playButton.textContent = '▶';
+
+    playButton.onclick = () => {
+        showVideoModal(product.video);
+    };
+
+    playButtonCell.appendChild(playButton);
+}
+
+row.appendChild(playButtonCell);
+
                 // Image cell
                 const imageCell = document.createElement('td');
                 const img = document.createElement('img');
@@ -259,7 +260,7 @@ row.appendChild(addCell);
                 symbolElement.style.color = 'black'; // Reset (Default Color)
             } else {
                 sortOrder[key] = 'asc';
-                symbolElement.style.color = 'green'; // Low to High (Green)
+                symbolElement.style.color = '#F7A60C'; // Low to High (Green)
             }
 
             // Reset the colors of other sort symbols

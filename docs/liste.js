@@ -107,22 +107,25 @@ fetch('products.json')
             productsToShow.forEach(product => {
                 const row = document.createElement('tr');
 
-                // Play button cell
-                const playButtonCell = document.createElement('td');
-                playButtonCell.classList.add('play-button-cell');
-                const playButton = document.createElement('button');
-                playButton.classList.add('play-btn');
-                playButton.textContent = '▶';
-                playButton.onclick = () => {
-                    if (product.video) {
-                        showVideoModal(product.video);
-                    } else {
-                        console.error('No video link found for this product.');
-                    }
-                };
-                
-                playButtonCell.appendChild(playButton);
-                row.appendChild(playButtonCell);
+// Play button cell
+const playButtonCell = document.createElement('td');
+playButtonCell.classList.add('play-button-cell');
+
+// Check if the product has a valid video link
+if (product.video && product.video !== "x" && product.video.trim() !== "") {
+    const playButton = document.createElement('button');
+    playButton.classList.add('play-btn');
+    playButton.textContent = '▶';
+
+    playButton.onclick = () => {
+        showVideoModal(product.video);
+    };
+
+    playButtonCell.appendChild(playButton);
+}
+
+row.appendChild(playButtonCell);
+
 
                 const imageCell = document.createElement('td');
                 const img = document.createElement('img');
@@ -188,7 +191,7 @@ fetch('products.json')
                 if (productQuantities[product.id] > 1) {
                     const totalPrice = customPrices[product.id] * productQuantities[product.id];
                     const totalPriceSpan = document.createElement('div');
-                    totalPriceSpan.textContent = `(${totalPrice} DKK)`;
+                    totalPriceSpan.textContent = `(${formatWithCommas(totalPrice)} DKK)`;
                     totalPriceSpan.style.fontWeight = 'normal';
                     totalPriceSpan.style.textAlign = 'center';
                     totalPriceSpan.style.fontSize = 'smaller';
@@ -277,10 +280,16 @@ fetch('products.json')
                 totalArtikler += product.artikler * quantity;
             });
 
-            document.getElementById('sum-price').textContent = `${totalPrice} DKK`;
+            document.getElementById('sum-price').textContent = `${formatWithCommas(totalPrice)} DKK`;
             document.getElementById('sum-nem').textContent = `${totalNem} g`;
             document.getElementById('sum-artikler').textContent = `${totalArtikler} stk`;
         }
+        function formatWithCommas(value) {
+            const formatted = value.toLocaleString('en-DK'); // Formats with commas (Fjerner mange kommataller)
+            const parts = formatted.split(',');
+            return parts.slice(0, 3).join(','); // Allow up to two commas
+        }
+        
 
         function toggleSortOrder(symbolElement, key) {
             if (sortOrder[key] === 'asc') {
@@ -291,7 +300,7 @@ fetch('products.json')
                 symbolElement.style.color = 'black';
             } else {
                 sortOrder[key] = 'asc';
-                symbolElement.style.color = 'green';
+                symbolElement.style.color = '#F7A60C';
             }
 
             if (key !== 'price') sortPriceSymbol.style.color = 'black';
