@@ -135,14 +135,15 @@ function observeProductImages() {
 
     productImages.forEach((img) => {
         if (!img.dataset.eventsAttached) {
-            // Open product link on click
+            // Handle click to open product link
             img.addEventListener('click', () => {
-                const productId = img.dataset.productId;
-                const product = products.find((p) => p.id == productId);
+                const productName = img.dataset.productName; // Get product name from dataset
+                const product = products.find((p) => p.name === productName); // Search by name
+
                 if (product?.produktlink) {
-                    window.open(product.produktlink, '_blank');
+                    window.open(product.produktlink, '_blank'); // Open the product link in a new tab
                 } else {
-                    console.error('Product link not found for this image.');
+                    console.error(`Produktlink not found for product: ${productName}`);
                 }
             });
 
@@ -154,36 +155,35 @@ function observeProductImages() {
                 hoverTimeout = setTimeout(() => {
                     const rect = img.getBoundingClientRect();
                     enlargedImg = img.cloneNode(true);
-                    
-                    // Style for enlarged image
+
+                    // Style the enlarged image
                     Object.assign(enlargedImg.style, {
                         transform: 'scale(5)',
                         position: 'absolute',
                         zIndex: '1000',
-                        transition: 'transform 0.3s ease-in-out',
                         pointerEvents: 'none',
-                        top: `${rect.top + window.scrollY}px`, // Adjust for vertical scroll
-                        left: `${rect.left + window.scrollX}px`, // Adjust for horizontal scroll
-                        width: `${rect.width}px`,  // Ensure original size consistency
-                        height: `${rect.height}px`
+                        top: `${rect.top + window.scrollY}px`,
+                        left: `${rect.left + window.scrollX}px`,
+                        width: `${rect.width}px`,
+                        height: `${rect.height}px`,
                     });
 
                     enlargedImg.classList.add('enlarged-image');
                     document.body.appendChild(enlargedImg);
 
-                    img.dataset.enlargedImageId = `enlarged-${img.dataset.productId}`;
-                    enlargedImg.dataset.enlargedImageId = `enlarged-${img.dataset.productId}`;
-                }, 300); // Delay for smooth hover effect
+                    img.dataset.enlargedImageId = `enlarged-${img.dataset.productName}`;
+                    enlargedImg.dataset.enlargedImageId = `enlarged-${img.dataset.productName}`;
+                }, 300); // Delay for hover effect
             });
 
             img.addEventListener('mouseleave', () => {
                 clearTimeout(hoverTimeout);
                 if (enlargedImg) {
-                    enlargedImg.remove(); // Ensure enlarged image cleanup
+                    enlargedImg.remove(); // Ensure enlarged image is cleaned up
                 }
             });
 
-            img.dataset.eventsAttached = 'true'; // Avoid duplicate listeners
+            img.dataset.eventsAttached = 'true'; // Prevent duplicate event listeners
         }
     });
 }

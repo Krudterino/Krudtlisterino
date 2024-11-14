@@ -160,52 +160,62 @@ th.varenr-cell {
     background-color: #ece8f1; /* Example for Varenr column */
     width: 150px;
     text-align: center;
+    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 
 th.shop-cell {
     background-color: #ece8f1; /* Example for Shop column */
     width: 250px;
     text-align: center;
+    z-index: 50; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 
 th.type-cell {
     background-color: #ece8f1; /* Example for Shop column */
     width: 120px;
     text-align: center;
+    z-index: 49; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 th.kaliber-cell {
     background-color: #ece8f1; /* Example for Shop column */
     width: 120px;
     text-align: center;
+    z-index: 48; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 th.skud-cell {
     background-color: #ece8f1; /* Example for Shop column */
     width: 80px;
     text-align: center;
+    z-index: 47; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 th.nem-cell {
     background-color: #ece8f1; /* Example for Shop column */
     width: 120px;
     text-align: center;
+    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 th.price-cell {
     background-color: #ece8f1; /* Example for Shop column */
     width: 150px;
     text-align: center;
+    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 th.artikler-cell {
     background-color: #ece8f1; /* Example for Shop column */
     width: 80px;
     text-align: center;
+    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 th.antal-cell {
     background-color: #ece8f1; /* Example for Shop column */
     width: 80px;
     text-align: center;
+    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 th.add-cell {
     border:none;
     background: white;
+    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
 }
 .sort-symbol {
     cursor: pointer;
@@ -329,10 +339,11 @@ th.add-cell {
     position: absolute;
     background-color: #fff7c7;
     border: 1px solid #ddd;
-    max-height: 150px;
+    max-height: 500px;
     overflow-y: auto;
-    z-index: 1;
+    z-index: 1000;
     padding: 5px;
+    text-align: left;
 }
 .dropdown-text {
     opacity: 50%;

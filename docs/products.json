@@ -1,6 +1,5 @@
 [
     {
-        "id": 11111,
         "name": "Dramatic",
         "serie": "Black And White",
         "price": 150,
@@ -17,7 +16,6 @@
         "varenr": "12345"
     },
     {
-        "id": 22222,
         "name": "SILVER GLITTERING WILLOW WITH SILVER BLINKING TAIL",
 		"serie": "Black And White",
         "price": 80,
@@ -34,7 +32,6 @@
         "varenr": "67890"
     },
     {
-        "id": 33333,
         "name": "400 Shots Mega Display Box",
 		"serie": "Black And White",
         "price": 4999.95,
@@ -51,7 +48,6 @@
         "varenr": "42079"
     },
     {
-        "id": 1,
         "name": "1.2 Freestyle Madness 100 Shots",
 		"serie": "",
         "price": 1879,
@@ -68,7 +64,6 @@
         "varenr": "5162"
     },
     {
-        "id": 2,
         "name": "1.2” Golden Wizards 100shots",
 		"serie": "",
         "price": 1879,
@@ -85,7 +80,6 @@
         "varenr": "5183"
     },
     {
-        "id": 3,
         "name": "1.2″ Temptation Willow",
 		"serie": "",
         "price": 1879,
@@ -102,7 +96,6 @@
         "varenr": "0487"
     },
     {
-        "id": 4,
         "name": "1.2″” Insane Crown Bomber 100 shot",
 		"serie": "",
         "price": 1879,
@@ -119,7 +112,6 @@
         "varenr": "0636"
     },
     {
-        "id": 5,
         "name": "1″ Perfect Balance 50 shots",
 		"serie": "",
         "price": 649,
@@ -136,7 +128,6 @@
         "varenr": "5116"
     },
     {
-        "id": 6,
         "name": "1″ Triple Double",
 		"serie": "",
         "price": 949,
@@ -153,7 +144,6 @@
         "varenr": "5121"
     },
     {
-        "id": 7,
         "name": "1″ Ultimate Design",
 		"serie": "",
         "price": 1449,
@@ -170,7 +160,6 @@
         "varenr": "5124"
     },
     {
-        "id": 8,
         "name": "133 Shots Mixed Big Display",
 		"serie": "",
         "price": 2779,
@@ -187,7 +176,7 @@
         "varenr": "5134"
     },
     {
-        "id": 9,
+        
         "name": "400 Shots Mega Display Box",
 		"serie": "",
         "price": 2479,
@@ -204,7 +193,7 @@
         "varenr": "5132"
     },
     {
-        "id": 10,
+        
         "name": "Angel Dust",
 		"serie": "",
         "price": 749,
@@ -221,7 +210,6 @@
         "varenr": "5835"
     },
     {
-        "id": 11,
         "name": "Armageddon",
 		"serie": "",
         "price": 3595,
@@ -238,7 +226,6 @@
         "varenr": "1371"
     },
     {
-        "id": 12,
         "name": "Blinking Fermata",
 		"serie": "",
         "price": 1499,
@@ -255,7 +242,6 @@
         "varenr": "1354"
     },
     {
-        "id": 13,
         "name": "Blistering Skies",
 		"serie": "",
         "price": 849,
@@ -272,7 +258,6 @@
         "varenr": "0484"
     },
     {
-        "id": 14,
         "name": "Cardinal Directions 268 shots",
 		"serie": "",
         "price": 2379,
@@ -289,7 +274,6 @@
         "varenr": "5372"
     },
     {
-        "id": 15,
         "name": "Dakota Sunset",
 		"serie": "",
         "price": 3299,
@@ -306,7 +290,6 @@
         "varenr": "VC451"
     },
     {
-        "id": 16,
         "name": "Double Trouble",
 		"serie": "",
         "price": 679,
@@ -323,7 +306,6 @@
         "varenr": "5221"
     },
     {
-        "id": 17,
         "name": "Dynamic Chrysanthemum Display",
 		"serie": "",
         "price": 1299,
@@ -340,7 +322,6 @@
         "varenr": "1155"
     },
     {
-        "id": 18,
         "name": "Extreme Salute 108 shots",
 		"serie": "",
         "price": 779,
@@ -357,7 +338,6 @@
         "varenr": "5109"
     },
     {
-        "id": 19,
         "name": "Extreme Starburst 288’S",
 		"serie": "",
         "price": 3695,
@@ -374,7 +354,6 @@
         "varenr": "1879"
     },
     {
-        "id": 20,
         "name": "Frontline Fire",
 		"serie": "",
         "price": 849,
@@ -391,7 +370,6 @@
         "varenr": "0480"
     },
     {
-        "id": 21,
         "name": "Head Hunter",
 		"serie": "",
         "price": 429,
@@ -408,7 +386,6 @@
         "varenr": "0472"
     },
     {
-        "id": 22,
         "name": "Magnum P.I. (Pyro Insanity)",
 		"serie": "",
         "price": 3658,
@@ -425,7 +402,6 @@
         "varenr": "1375"
     },
     {
-        "id": 23,
         "name": "Maori blended Family 146 shots",
 		"serie": "",
         "price": 2229,
@@ -442,7 +418,6 @@
         "varenr": "5177"
     },
     {
-        "id": 24,
         "name": "Proud Mary",
 		"serie": "",
         "price": 1999,
@@ -459,7 +434,6 @@
         "varenr": "1357"
     },
     {
-        "id": 25,
         "name": "Santa Domingo",
 		"serie": "",
         "price": 2899,
@@ -476,7 +450,6 @@
         "varenr": "0496"
     },
     {
-        "id": 26,
         "name": "Sensation Master",
 		"serie": "",
         "price": 1399,
@@ -493,7 +466,6 @@
         "varenr": "0485"
     },
     {
-        "id": 27,
         "name": "Sunflower Supershow 100 shots",
 		"serie": "",
         "price": 1259,
@@ -510,7 +482,6 @@
         "varenr": "5222"
     },
     {
-        "id": 28,
         "name": "Tailgate fan",
 		"serie": "",
         "price": 899,
@@ -527,7 +498,6 @@
         "varenr": "2832"
     },
     {
-        "id": 29,
         "name": "The Flying Dutchman",
 		"serie": "",
         "price": 899,
@@ -544,7 +514,6 @@
         "varenr": "1350"
     },
     {
-        "id": 30,
         "name": "The Notorious",
 		"serie": "",
         "price": 949,
@@ -561,7 +530,6 @@
         "varenr": "5173"
     },
     {
-        "id": 31,
         "name": "Total Sphere Mix Display",
 		"serie": "",
         "price": 949,
@@ -578,7 +546,6 @@
         "varenr": "5351"
     },
     {
-        "id": 32,
         "name": "Triple X",
 		"serie": "",
         "price": 3595,
@@ -595,7 +562,6 @@
         "varenr": "1878"
     },
     {
-        "id": 33,
         "name": "Ultimate Mixed 300 Shots Display",
 		"serie": "",
         "price": 2199,
@@ -612,7 +578,6 @@
         "varenr": "5147"
     },
     {
-        "id": 34,
         "name": "All-in the Mix",
 		"serie": "",
         "price": 339,
@@ -629,7 +594,6 @@
         "varenr": "0538"
     },
     {
-        "id": 35,
         "name": "Blinking Starlight",
 		"serie": "",
         "price": 229,
@@ -646,7 +610,6 @@
         "varenr": "5211"
     },
     {
-        "id": 36,
         "name": "Blinking Willow",
 		"serie": "",
         "price": 789,
@@ -663,7 +626,6 @@
         "varenr": "5110"
     },
     {
-        "id": 37,
         "name": "Block Buster 19 shots",
 		"serie": "",
         "price": 179,
@@ -680,7 +642,6 @@
         "varenr": "0536"
     },
     {
-        "id": 38,
         "name": "Brocade Bomber",
 		"serie": "",
         "price": 599,
@@ -697,7 +658,6 @@
         "varenr": "1880"
     },
     {
-        "id": 39,
         "name": "Caïro Crackling",
 		"serie": "",
         "price": 429,
@@ -714,7 +674,6 @@
         "varenr": "VC394"
     },
     {
-        "id": 40,
         "name": "China Pearls 96 Shots",
 		"serie": "",
         "price": 49,
@@ -731,7 +690,6 @@
         "varenr": "0994"
     },
     {
-        "id": 41,
         "name": "Crystal Tropic",
 		"serie": "",
         "price": 579,
@@ -748,7 +706,6 @@
         "varenr": "5213"
     },
     {
-        "id": 42,
         "name": "Display Turbo Box 100 Shots",
 		"serie": "",
         "price": 799,
@@ -765,7 +722,6 @@
         "varenr": "5118"
     },
     {
-        "id": 43,
         "name": "Magic Sunset",
 		"serie": "",
         "price": 449,
@@ -782,7 +738,6 @@
         "varenr": "5212"
     },
     {
-        "id": 44,
         "name": "Philadelphia Spitters",
 		"serie": "",
         "price": 549,
@@ -799,7 +754,6 @@
         "varenr": "VC308"
     },
     {
-        "id": 45,
         "name": "WCKD Warlord",
 		"serie": "",
         "price": 349,
@@ -816,7 +770,6 @@
         "varenr": "0426"
     },
     {
-        "id": 46,
         "name": "2″ R.T.C. (Rotterdam Terror Corps)",
 		"serie": "",
         "price": 99,
@@ -833,7 +786,6 @@
         "varenr": "1303"
     },
     {
-        "id": 47,
         "name": "Mega Mine",
 		"serie": "",
         "price": 179,
@@ -850,7 +802,6 @@
         "varenr": "418"
     },
     {
-        "id": 48,
         "name": "Thunderking Crackling Mortar",
 		"serie": "",
         "price": 49,
@@ -865,5 +816,373 @@
         "produktlink": "https://shop.worldoffireworks.dk/product/thunderking-crackling-mortar",
         "sale": "",
         "varenr": "VC543"
+    },
+    {
+        "name": "Crackling Bizar Fountain",
+		"serie": "",
+        "price": 79,
+        "type": "Fontæne",
+        "shop": "World of Fireworks",
+        "nem": 114,
+        "artikler": 1,
+		"skud": 1,
+		"kaliber": "18",
+        "image": "images/WoF/WoFbilleder0220.jpg",
+        "video": "https://www.youtube.com/watch?v=on5VqeV5_Ho",
+        "produktlink": "https://shop.worldoffireworks.dk/product/crackling-bizar-fountain",
+        "sale": "",
+        "varenr": "0220"
+    },
+    {
+        "name": "Neon Fishes Fountain",
+		"serie": "",
+        "price": 69,
+        "type": "Fontæne",
+        "shop": "World of Fireworks",
+        "nem": 150,
+        "artikler": 1,
+		"skud": 1,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder213.jpg",
+        "video": "https://www.youtube.com/watch?v=kZyyjkpBYyg",
+        "produktlink": "https://shop.worldoffireworks.dk/product/neon-fishes-fountain",
+        "sale": "",
+        "varenr": "213"
+    },
+    {
+        "name": "Super Etna",
+		"serie": "",
+        "price": 149,
+        "type": "Fontæne",
+        "shop": "World of Fireworks",
+        "nem": 100,
+        "artikler": 1,
+		"skud": 1,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder1600.jpg",
+        "video": "https://www.youtube.com/watch?v=Pm2JeEJp0pA",
+        "produktlink": "https://shop.worldoffireworks.dk/product/super-etna",
+        "sale": "",
+        "varenr": "1600"
+    },
+        {
+        "name": "Cat.1 - Extravaganza",
+		"serie": "",
+        "price": 149,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 56,
+        "artikler": 8,
+		"skud": 8,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder1743.jpg",
+        "video": "",
+        "produktlink": "https://shop.worldoffireworks.dk/product/cat-1-extravaganza",
+        "sale": "",
+        "varenr": "1743"
+    },
+    {
+        "name": "Cat.1 - Fun Pack",
+		"serie": "",
+        "price": 249,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 79,
+        "artikler": 16,
+		"skud": 16,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder1767.jpg",
+        "video": "",
+        "produktlink": "https://shop.worldoffireworks.dk/product/cat-1-fun-pack",
+        "sale": "",
+        "varenr": "1767"
+    },
+    {
+        "name": "Cat.1 – Pyro Night",
+		"serie": "",
+        "price": 149,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 70,
+        "artikler": 10,
+		"skud": 10,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder1742.jpg",
+        "video": "",
+        "produktlink": "https://shop.worldoffireworks.dk/product/cat-1-pyro-night",
+        "sale": "",
+        "varenr": "1742"
+    },
+    {
+        "name": "Cat.1 – Thunder Crackers",
+		"serie": "",
+        "price": 99,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 24,
+        "artikler": 20,
+		"skud": 20,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder0042.jpg",
+        "video": "https://www.youtube.com/watch?v=RU_n_LSIx48&t=1s",
+        "produktlink": "https://shop.worldoffireworks.dk/product/cat-1-thunder-crackers",
+        "sale": "",
+        "varenr": "0042"
+    },
+    {
+        "name": "Crazy Festival",
+		"serie": "",
+        "price": 129,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 65,
+        "artikler": 12,
+		"skud": 0,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder1803.jpg",
+        "video": "https://www.youtube.com/watch?v=Fa0c1krn9EI",
+        "produktlink": "https://shop.worldoffireworks.dk/product/crazy-festival",
+        "sale": "",
+        "varenr": "1803"
+    },
+    {
+        "name": "Crazy Fire",
+		"serie": "",
+        "price": 1815,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 65,
+        "artikler": 10,
+		"skud": 0,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder1815.jpg",
+        "video": "https://www.youtube.com/watch?v=BOXHLK4QZCE",
+        "produktlink": "https://shop.worldoffireworks.dk/product/crazy-fire",
+        "sale": "",
+        "varenr": "1815"
+    },
+    {
+        "name": "Etna Bulk Pack 12 stk Fontæne",
+		"serie": "",
+        "price": 99,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 60,
+        "artikler": 12,
+		"skud": 12,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder149.jpg",
+        "video": "https://www.youtube.com/watch?v=2lUZP73g_6U",
+        "produktlink": "https://shop.worldoffireworks.dk/product/etna-bulk-pack-12-stk-fontaene",
+        "sale": "",
+        "varenr": "149"
+    },
+    {
+        "name": "Fire Pack",
+		"serie": "",
+        "price": 99,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 38,
+        "artikler": 5,
+		"skud": 0,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder1828.jpg",
+        "video": "https://www.youtube.com/watch?v=Qy1NmlUAa5Q",
+        "produktlink": "https://shop.worldoffireworks.dk/product/fire-pack",
+        "sale": "",
+        "varenr": "1828"
+    },
+    {
+        "name": "Knetterton",
+		"serie": "",
+        "price": 39,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 78,
+        "artikler": 3,
+		"skud": 3,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder0982.jpg",
+        "video": "https://www.youtube.com/watch?v=VY8ZGMCrPLA",
+        "produktlink": "https://shop.worldoffireworks.dk/product/knetterton",
+        "sale": "",
+        "varenr": "0982"
+    },
+    {
+        "name": "Cat.1 - Pyro Kids",
+		"serie": "",
+        "price": 99,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 64,
+        "artikler": 11,
+		"skud": 0,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder1800.jpg",
+        "video": "https://www.youtube.com/watch?v=R73xPE-7CEc",
+        "produktlink": "https://shop.worldoffireworks.dk/product/pyro-kids",
+        "sale": "",
+        "varenr": "1800"
+    },
+    {
+        "name": "RK 280 sh. 0,5″ Illusion",
+		"serie": "",
+        "price": 149,
+        "type": "Junior/Andet",
+        "shop": "World of Fireworks",
+        "nem": 280,
+        "artikler": 1,
+		"skud": 280,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder940344.jpg",
+        "video": "https://www.youtube.com/watch?v=zwDIeAIZUs4",
+        "produktlink": "https://shop.worldoffireworks.dk/product/rk-280-sh-05-illusion",
+        "sale": "",
+        "varenr": "940344"
+    },
+    {
+        "name": "Magnum Shell Rockets 1.5″",
+		"serie": "",
+        "price": 249,
+        "type": "Raket",
+        "shop": "World of Fireworks",
+        "nem": 107,
+        "artikler": 1,
+		"skud": 1,
+		"kaliber": "",
+        "image": "images/WoF/WoFbilleder1476.jpg",
+        "video": "https://www.youtube.com/watch?v=M5IHVyELPCA",
+        "produktlink": "https://shop.worldoffireworks.dk/product/magnum-shell-rockets-1-5",
+        "sale": "",
+        "varenr": "1476"
+    },
+    {
+        "name": "Badar & Blaze",
+		"serie": "",
+        "price": 249,
+        "type": "Sortiment",
+        "shop": "World of Fireworks",
+        "nem": 200,
+        "artikler": 2,
+		"skud": 26,
+		"kaliber": "20",
+        "image": "images/WoF/WoFbilleder0463.jpg",
+        "video": "https://www.youtube.com/watch?v=x8HbJgHZcyw",
+        "produktlink": "https://shop.worldoffireworks.dk/product/badar-blaze",
+        "sale": "",
+        "varenr": "0463"
+    },
+    {
+        "name": "Cool Bastards",
+		"serie": "",
+        "price": 529,
+        "type": "Sortiment",
+        "shop": "World of Fireworks",
+        "nem": 315,
+        "artikler": 5,
+		"skud": 50,
+		"kaliber": "20",
+        "image": "images/WoF/WoFbilleder0565.jpg",
+        "video": "",
+        "produktlink": "https://shop.worldoffireworks.dk/product/cool-bastards",
+        "sale": "",
+        "varenr": "0565"
+    },
+    {
+        "name": "Cyber & Brave",
+		"serie": "",
+        "price": 249,
+        "type": "Sortiment",
+        "shop": "World of Fireworks",
+        "nem": 240,
+        "artikler": 2,
+		"skud": 18,
+		"kaliber": "25",
+        "image": "images/WoF/WoFbilleder0443.jpg",
+        "video": "https://www.youtube.com/watch?v=Iz_bLi6MQuQ",
+        "produktlink": "https://shop.worldoffireworks.dk/product/cyber-brave",
+        "sale": "",
+        "varenr": "0443"
+    },
+    {
+        "name": "Mixed City Trip",
+		"serie": "",
+        "price": 1979,
+        "type": "Sortiment",
+        "shop": "World of Fireworks",
+        "nem": 2284,
+        "artikler": 50,
+		"skud": 180,
+		"kaliber": "25",
+        "image": "images/WoF/WoFbilleder5415.jpg",
+        "video": "https://www.youtube.com/watch?v=2ImLxXRRXBU",
+        "produktlink": "https://shop.worldoffireworks.dk/product/mixed-city-trip",
+        "sale": "",
+        "varenr": "5415"
+    },
+    {
+        "name": "Psycho & Kamikaze",
+		"serie": "",
+        "price": 149,
+        "type": "Sortiment",
+        "shop": "World of Fireworks",
+        "nem": 126,
+        "artikler": 2,
+		"skud": 20,
+		"kaliber": "20",
+        "image": "images/WoF/WoFbilleder0442.jpg",
+        "video": "https://www.youtube.com/watch?v=jwMFL_KhWEA",
+        "produktlink": "https://shop.worldoffireworks.dk/product/psycho-kamikaze",
+        "sale": "",
+        "varenr": "0442"
+    },
+    {
+        "name": "Sirius & The Blizz",
+		"serie": "",
+        "price": 569,
+        "type": "Sortiment",
+        "shop": "World of Fireworks",
+        "nem": 893,
+        "artikler": 2,
+		"skud": 40,
+		"kaliber": "25",
+        "image": "images/WoF/WoFbilleder0454.jpg",
+        "video": "https://www.youtube.com/watch?v=-ZTQzdpMfy4",
+        "produktlink": "https://shop.worldoffireworks.dk/product/sirius-the-blizz",
+        "sale": "",
+        "varenr": "0454"
+    },
+    {
+        "name": "WCKD SIX",
+		"serie": "",
+        "price": 1499,
+        "type": "Sortiment",
+        "shop": "World of Fireworks",
+        "nem": 1464,
+        "artikler": 6,
+		"skud": 120,
+		"kaliber": "25",
+        "image": "images/WoF/WoFbilleder5567.jpg",
+        "video": "https://www.youtube.com/watch?v=tgSTksSESfc",
+        "produktlink": "https://shop.worldoffireworks.dk/product/wckd-six-2",
+        "sale": "",
+        "varenr": "5567"
+    },
+    {
+        "name": "WCKD Spacersx",
+		"serie": "",
+        "price": 499,
+        "type": "Sortiment",
+        "shop": "World of Fireworks",
+        "nem": 315,
+        "artikler": 5,
+		"skud": 59,
+		"kaliber": "20",
+        "image": "images/WoF/WoFbilleder0462.jpg",
+        "video": "https://www.youtube.com/watch?v=w1Extcs4Pko",
+        "produktlink": "https://shop.worldoffireworks.dk/product/wckd-spacers",
+        "sale": "",
+        "varenr": "0462"
     }
 ]

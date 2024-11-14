@@ -2,16 +2,16 @@
 fetch('products.json')
     .then(response => response.json())
     .then(products => {
-        let selectedProductIds = JSON.parse(localStorage.getItem('selectedProducts')) || [];
+        let selectedproductnames = JSON.parse(localStorage.getItem('selectedProducts')) || [];
         let savedQuantities = JSON.parse(localStorage.getItem('productQuantities')) || {};
         let savedCustomPrices = JSON.parse(localStorage.getItem('customPrices')) || {};
         let productQuantities = {};
         let customPrices = {};
 
-        let selectedProducts = products.filter(product => selectedProductIds.includes(product.id));
+        let selectedProducts = products.filter(product => selectedproductnames.includes(product.name));
         selectedProducts.forEach(product => {
-            productQuantities[product.id] = savedQuantities[product.id] || 1;
-            customPrices[product.id] = savedCustomPrices[product.id] ?? product.price;
+            productQuantities[product.name] = savedQuantities[product.name] || 1;
+            customPrices[product.name] = savedCustomPrices[product.name] ?? product.price;
         });
 
         let filteredProducts = [...selectedProducts];
@@ -61,7 +61,7 @@ fetch('products.json')
         function saveData() {
             localStorage.setItem('productQuantities', JSON.stringify(productQuantities));
             localStorage.setItem('customPrices', JSON.stringify(customPrices));
-            localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts.map(product => product.id)));
+            localStorage.setItem('selectedProducts', JSON.stringify(selectedProducts.map(product => product.name)));
         }
 
         function applyFiltersAndSearch() {
@@ -129,7 +129,7 @@ row.appendChild(playButtonCell);
 
                 const imageCell = document.createElement('td');
                 const img = document.createElement('img');
-                img.dataset.productId = product.id; // Assign the product ID to the image
+                img.dataset.productName = product.name;
                 img.src = product.image;
                 img.alt = product.name;
                 img.classList.add('product-image');
@@ -165,16 +165,16 @@ row.appendChild(playButtonCell);
                 const priceInput = document.createElement('input');
                 priceInput.type = 'number';
                 priceInput.min = '0';
-                priceInput.value = customPrices[product.id];
+                priceInput.value = customPrices[product.name];
                 priceInput.classList.add('price-input');
 
-                if (customPrices[product.id] !== product.price) {
+                if (customPrices[product.name] !== product.price) {
                     priceInput.classList.add('custom-price');
                 }
 
                 priceInput.addEventListener('blur', () => {
                     const newPrice = parseFloat(priceInput.value) || 0;
-                    customPrices[product.id] = newPrice > 0 ? newPrice : product.price;
+                    customPrices[product.name] = newPrice > 0 ? newPrice : product.price;
                     saveData();
                     displayProducts();
                     calculateSums();
@@ -188,8 +188,8 @@ row.appendChild(playButtonCell);
                 priceInputWrapper.appendChild(dkkLabel);
                 priceCell.appendChild(priceInputWrapper);
 
-                if (productQuantities[product.id] > 1) {
-                    const totalPrice = customPrices[product.id] * productQuantities[product.id];
+                if (productQuantities[product.name] > 1) {
+                    const totalPrice = customPrices[product.name] * productQuantities[product.name];
                     const totalPriceSpan = document.createElement('div');
                     totalPriceSpan.textContent = `(${formatWithCommas(totalPrice)} DKK)`;
                     totalPriceSpan.style.fontWeight = 'normal';
@@ -204,8 +204,8 @@ row.appendChild(playButtonCell);
                 nemCell.style.textAlign = 'center';
                 nemCell.textContent = `${product.nem} g`;
 
-                if (productQuantities[product.id] > 1) {
-                    const totalNem = product.nem * productQuantities[product.id];
+                if (productQuantities[product.name] > 1) {
+                    const totalNem = product.nem * productQuantities[product.name];
                     const totalNemSpan = document.createElement('div');
                     totalNemSpan.textContent = `(${totalNem} g)`;
                     totalNemSpan.style.fontWeight = 'normal';
@@ -219,8 +219,8 @@ row.appendChild(playButtonCell);
                 artiklerCell.style.textAlign = 'center';
                 artiklerCell.textContent = `${product.artikler} stk`;
 
-                if (productQuantities[product.id] > 1) {
-                    const totalArtikler = product.artikler * productQuantities[product.id];
+                if (productQuantities[product.name] > 1) {
+                    const totalArtikler = product.artikler * productQuantities[product.name];
                     const totalArtiklerSpan = document.createElement('div');
                     totalArtiklerSpan.textContent = `(${totalArtikler} stk)`;
                     totalArtiklerSpan.style.fontWeight = 'normal';
@@ -235,11 +235,11 @@ row.appendChild(playButtonCell);
                 const quantityInput = document.createElement('input');
                 quantityInput.type = 'number';
                 quantityInput.min = '1';
-                quantityInput.value = productQuantities[product.id];
+                quantityInput.value = productQuantities[product.name];
                 quantityInput.classList.add('quantity-input');
                 quantityInput.addEventListener('input', () => {
                     const newQuantity = Math.max(1, parseInt(quantityInput.value) || 1);
-                    productQuantities[product.id] = newQuantity;
+                    productQuantities[product.name] = newQuantity;
                     saveData();
                     displayProducts();
                     calculateSums();
@@ -253,10 +253,10 @@ row.appendChild(playButtonCell);
                 const removeButton = document.createElement('button');
                 removeButton.textContent = '-';
                 removeButton.classList.add('remove-btn');
-                removeButton.dataset.id = product.id;
+                removeButton.dataset.id = product.name;
                 removeButton.addEventListener('click', () => {
-                    selectedProducts = selectedProducts.filter(p => p.id !== product.id);
-                    filteredProducts = filteredProducts.filter(p => p.id !== product.id);
+                    selectedProducts = selectedProducts.filter(p => p.id !== product.name);
+                    filteredProducts = filteredProducts.filter(p => p.id !== product.name);
                     saveData();
                     displayProducts();
                     calculateSums();
@@ -274,8 +274,8 @@ row.appendChild(playButtonCell);
             let totalArtikler = 0;
 
             filteredProducts.forEach(product => {
-                const quantity = productQuantities[product.id];
-                totalPrice += customPrices[product.id] * quantity;
+                const quantity = productQuantities[product.name];
+                totalPrice += customPrices[product.name] * quantity;
                 totalNem += product.nem * quantity;
                 totalArtikler += product.artikler * quantity;
             });

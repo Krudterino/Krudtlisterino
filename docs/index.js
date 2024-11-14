@@ -159,7 +159,7 @@ row.appendChild(playButtonCell);
                 img.src = product.image;
                 img.alt = product.name;
                 img.classList.add('product-image');
-                img.dataset.productId = product.id;  // Assign the product ID
+                img.dataset.productName = product.name;
                 imageCell.appendChild(img);
                 row.appendChild(imageCell);
 
@@ -186,12 +186,12 @@ row.appendChild(playButtonCell);
             
                 // Kaliber cell
                 const kaliberCell = document.createElement('td');
-                kaliberCell.textContent = product.kaliber ? `${product.kaliber} mm` : 'N/A';
+                kaliberCell.textContent = product.kaliber ? `${product.kaliber} mm` : 'Ukendt';
                 row.appendChild(kaliberCell);
             
                 // Skud cell
                 const skudCell = document.createElement('td');
-                skudCell.textContent = product.skud ? `${product.skud} skud` : 'N/A';
+                skudCell.textContent = product.skud ? `${product.skud} skud` : 'Ukendt';
                 row.appendChild(skudCell);
             
                 // Pris cell with suffix
@@ -218,19 +218,19 @@ addButton.textContent = '+';
 addButton.classList.add('add-btn'); // Apply "add-btn" class for styling
 
 // Add a selected style if the product is already in the list
-if (selectedProducts.includes(product.id)) {
+if (selectedProducts.includes(product.name)) {
     addButton.classList.add('selected'); // Use "selected" class to indicate selection
 }
 
 // Click event to add/remove product from the list
 addButton.addEventListener('click', () => {
-    if (selectedProducts.includes(product.id)) {
+    if (selectedProducts.includes(product.name)) {
         // If the product is already selected, remove it
-        selectedProducts = selectedProducts.filter(id => id !== product.id);
+        selectedProducts = selectedProducts.filter(id => id !== product.name);
         addButton.classList.remove('selected'); // Remove selected class
     } else {
         // If the product is not selected, add it
-        selectedProducts.push(product.id);
+        selectedProducts.push(product.name);
         addButton.classList.add('selected'); // Apply selected class
     }
 
