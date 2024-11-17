@@ -212,7 +212,7 @@ const db = firebase.firestore(); // Initialize Firestore
 async function saveData(code, data) {
     try {
         await db.collection('sharedLists').doc(code).set(data);
-        console.log(`Data successfully saved under code: ${code}`, data); // Debugging
+        console.log(`Data successfully saved under code: ${code}`, data);
     } catch (error) {
         console.error('Error saving data:', error);
         alert('Failed to save data. Please try again.');
@@ -242,9 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             await saveData(randomCode, data);
-            const shareableLink = `${window.location.origin}/liste.html#${randomCode}`; // Use hash in URL
-
-            // Show the custom popup with the link
+            const shareableLink = `${window.location.origin}/liste.html#${randomCode}`;
             showPopup(shareableLink);
         } catch (error) {
             console.error('Error during DEL button process:', error);
@@ -262,14 +260,10 @@ function showPopup(link) {
     const overlay = document.getElementById('popup-overlay');
     const closeButton = document.getElementById('close-popup');
 
-    // Set link value
     popupLink.value = link;
-
-    // Show popup and overlay
     popup.style.display = 'block';
     overlay.style.display = 'block';
 
-    // Copy link to clipboard automatically
     popupLink.select();
     document.execCommand('copy');
 
@@ -288,41 +282,34 @@ async function loadSharedData() {
 
     if (code.length !== 6) {
         console.log('No valid 6-character code found in the URL hash.');
-        displayDefaultState(); // Display default state if no valid hash
+        displayDefaultState();
         return;
     }
 
-    console.log(`Attempting to load data for code: ${code}`); // Debugging
+    console.log(`Attempting to load data for code: ${code}`);
 
     try {
         const doc = await db.collection('sharedLists').doc(code).get();
         if (doc.exists) {
             const data = doc.data();
-            console.log('Data loaded:', data); // Debugging
-
-            // Populate localStorage with the fetched data
             for (const [key, value] of Object.entries(data)) {
                 localStorage.setItem(key, value);
             }
 
-            displayDataOnPage(data); // Display loaded data directly on the page
-
-            // Clean URL by removing the hash
+            displayDataOnPage(data);
             history.replaceState(null, '', 'liste.html');
 
-            // Force full page reload after data display to ensure formatting
             setTimeout(() => {
                 window.location.reload();
-            }, 50); // Adjust the delay if necessary
+            }, 50);
         } else {
             alert('No data found for this code.');
-            displayDefaultState(); // Show default if no data found
-            console.log(`No document found for code: ${code}`); // Debugging
+            displayDefaultState();
         }
     } catch (error) {
         console.error('Error loading shared data:', error);
         alert('Failed to load data. Please try again later.');
-        displayDefaultState(); // Fallback in case of error
+        displayDefaultState();
     }
 }
 
@@ -351,9 +338,8 @@ function displayDataOnPage(data) {
         return;
     }
 
-    listContainer.innerHTML = ''; // Clear existing content
+    listContainer.innerHTML = '';
 
-    // Render each item in a structured format (e.g., list or table)
     const list = document.createElement('ul');
     for (const [key, value] of Object.entries(data)) {
         const item = document.createElement('li');
@@ -366,6 +352,4 @@ function displayDataOnPage(data) {
 
 // Automatically attempt to load shared data on page load
 window.onload = loadSharedData;
-
-// Listen for hash changes and reload data when the hash changes
 window.addEventListener('hashchange', loadSharedData);
