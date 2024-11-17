@@ -13,6 +13,12 @@ body {
     margin-bottom: 1.85vh; /* 20px / 1080 * 100 */
 }
 
+.scroll-wrapper {
+    max-height: 80vh; /* Limit the height of the scrollable area */
+    padding-right: 1rem; /* Reserve space for scrollbar without shifting content */
+    box-sizing: content-box; /* Prevent padding from affecting table layout */
+}
+
 .nav-buttons {
     display: flex;
     gap: 0.8vw; /* 15px / 1920 * 100 */
@@ -368,11 +374,10 @@ th.add-cell {
 
 .dropdown-content {
     display: none;
-    position: fixed; /* Instead of absolute */
+    position: absolute; /* Instead of absolute */
     background-color: #fff7c7;
     border: 0.05vw solid #ddd; /* 1px / 1920 */
     max-height: 46.3vh; /* 500px / 1080 */
-    overflow-y: auto;
     z-index: 1000;
     padding: 0.46vh; /* 5px / 1080 */
     text-align: left;
