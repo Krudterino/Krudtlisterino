@@ -188,6 +188,8 @@ function observeProductImages() {
     });
 }
 
+
+
 // Firebase configuration object (from your Firebase Console)
 const firebaseConfig = {
     apiKey: "AIzaSyAaG3e2QZBDZ3RQXbsSBCyd_p6rr2slAUU",
@@ -403,3 +405,4 @@ window.onload = loadSharedData;
 
 // Reload data if the hash changes (e.g., user navigates back to shared link)
 window.addEventListener('hashchange', loadSharedData);
+

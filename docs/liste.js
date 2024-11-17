@@ -153,7 +153,7 @@ row.appendChild(playButtonCell);
                 row.appendChild(typeCell);
 
                 const skudCell = document.createElement('td');
-                skudCell.textContent = product.skud;
+                skudCell.textContent = product.skud ? `${product.skud} skud` : 'Ukendt';
                 row.appendChild(skudCell);
 
                 // Price Cell

@@ -66,10 +66,14 @@
                     </th>
                     <th class="add-cell"></th> <!-- add hjørne cell -->
                 </tr>
+                
             </thead>
             <tbody id="product-container">
                 <!-- Product rows will be dynamically added here by JavaScript -->
             </tbody>
+            <tr class="spacer-row"> <!-- ellers kan man ikke se hele dropdown menuen hvis der er få produkter -->
+                <td colspan="100%" style="height: 10vh; visibility: hidden;"></td>
+            </tr>            
         </table>
     </div>
     <div id="video-modal" class="modal">

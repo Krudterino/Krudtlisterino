@@ -196,7 +196,7 @@ row.appendChild(playButtonCell);
             
                 // Pris cell with suffix
                 const priceCell = document.createElement('td');
-                priceCell.textContent = `${product.price} DKK`;
+                priceCell.textContent = product.price ? `${product.price} DKK` : 'Ukendt';
                 row.appendChild(priceCell);
             
                 // NEM cell with suffix
