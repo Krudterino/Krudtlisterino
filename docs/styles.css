@@ -150,6 +150,7 @@ td {
 
 .play-btn:hover {
     background-color: #F7A60C;
+    box-shadow: 0 0 0.2vw #F7A60C;
 }
 
 th.play-cell {
@@ -176,7 +177,6 @@ td.play-button-cell {
 td.image-cell {
     width: 2.9vw; /* 55px / 1920 */
     padding: 0;
-    box-sizing: border-box;
 }
 
 th.image-cell {
@@ -278,6 +278,7 @@ th.add-cell {
     border-top: 0.1vw solid #2e3233;
     border-bottom: 0.1vw solid #2e3233;
     background: #e0e0e0;
+    padding-right: 1.5vw;
     z-index: 10;
 }
 .sort-symbol {
@@ -311,7 +312,7 @@ th.add-cell {
     padding-right: 5%; /* Maintain percentage */
     pointer-events: none;
     font-size: calc(10px + 0.3vw); /* Slightly increased (14px / 1080) for better visibility */
-    color: #555;
+    color: #2e3233;
 }
 
 .price-input-wrapper, .quantity-input-wrapper {
@@ -388,6 +389,8 @@ th.add-cell {
 .dropdown {
     position: relative;
     display: inline-block;
+    color: #2e3233;
+    box-sizing: border-box;
 }
 
 .dropdown-button {
@@ -418,6 +421,7 @@ th.add-cell {
 .dropdown-button:focus + .dropdown-content {
     display: block; /* Make dropdown visible */
     overflow: visible;
+    box-shadow: 0 0 0.2vw #F7A60C;
 }
 
 .add-btn {
@@ -433,8 +437,7 @@ th.add-cell {
 }
 
 .add-btn:hover {
-    background-color: #ffdb3c;
-    color: #e0e0e0;
+    box-shadow: 0 0 0.2vw #F7A60C;
 
 }
 
