@@ -212,7 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     delButton.addEventListener('click', async function () {
-        const randomCode = Math.random().toString(36).substring(2, 8); // Generate 6-character code
         const data = { ...localStorage }; // Clone all localStorage data
 
         if (Object.keys(data).length === 0) {
@@ -221,17 +220,69 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            await saveData(randomCode, data);
-            
-            // Generate the shareable link dynamically based on the current URL
-            const currentUrl = window.location.href.split('#')[0]; // Preserve current URL structure
-            const shareableLink = `${currentUrl}#${randomCode}`;
-            showPopup(shareableLink);
+            const existingCode = await findExistingData(data);
+
+            if (existingCode) {
+                console.log(`Reusing existing code: ${existingCode}`);
+                showPopup(`${window.location.href.split('#')[0]}#${existingCode}`);
+            } else {
+                const randomCode = Math.random().toString(36).substring(2, 8); // Generate 6-character code
+                await saveData(randomCode, data);
+                showPopup(`${window.location.href.split('#')[0]}#${randomCode}`);
+            }
         } catch (error) {
             console.error('Error during DEL button process:', error);
         }
     });
 });
+
+/**
+ * Check Firestore for an existing entry with the same data.
+ * @param {object} data - The data to check.
+ * @returns {string|null} - The existing code if found, otherwise null.
+ */
+async function findExistingData(data) {
+    try {
+        const querySnapshot = await db.collection('sharedLists').get();
+        
+        for (const doc of querySnapshot.docs) {
+            const storedData = doc.data();
+            
+            if (areObjectsEqual(storedData, data)) {
+                return doc.id; // Return the matching code (document ID)
+            }
+        }
+    } catch (error) {
+        console.error('Error checking for existing data:', error);
+    }
+    return null; // No match found
+}
+
+/**
+ * Compare two objects for equality, with sorted keys for consistency.
+ * @param {object} obj1 - The first object.
+ * @param {object} obj2 - The second object.
+ * @returns {boolean} - True if objects are equal, false otherwise.
+ */
+function areObjectsEqual(obj1, obj2) {
+    const sorted1 = JSON.stringify(sortObjectKeys(obj1));
+    const sorted2 = JSON.stringify(sortObjectKeys(obj2));
+    return sorted1 === sorted2;
+}
+
+/**
+ * Sort the keys of an object recursively.
+ * @param {object} obj - The object to sort.
+ * @returns {object} - A new object with sorted keys.
+ */
+function sortObjectKeys(obj) {
+    return Object.keys(obj).sort().reduce((result, key) => {
+        result[key] = typeof obj[key] === 'object' && !Array.isArray(obj[key]) 
+            ? sortObjectKeys(obj[key]) 
+            : obj[key];
+        return result;
+    }, {});
+}
 
 /**
  * Save data to Firestore under a specific code.
@@ -268,7 +319,7 @@ function showPopup(link) {
     closeButton.addEventListener('click', () => {
         popup.style.display = 'none';
         overlay.style.display = 'none';
-    }, { once: true }); // Ensure event doesn't stack with each click
+    }, { once: true }); // Ensure event doesn't stack
 }
 
 /**
@@ -294,10 +345,8 @@ async function loadSharedData() {
                 localStorage.setItem(key, value);
             }
 
-            displayDataOnPage(data); // Display data immediately
-            history.replaceState(null, '', 'liste.html'); // Clean the URL
-
-            // Reload the page to apply any necessary formatting
+            displayDataOnPage(data);
+            history.replaceState(null, '', 'liste.html');
             setTimeout(() => {
                 window.location.reload();
             }, 50);
