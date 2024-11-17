@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="popup-overlay"></div>
+
     <div class="header">
         <div class="nav-buttons">
             <a href="index.html" class="nav-button" id="katalog-button">Katalog</a>
@@ -64,13 +66,10 @@
             <tfoot>
                 <tr style="height: 20px;"></tr> <!-- Empty row with 50px height -->
                 <tr>
-                    <td colspan="9" style="border: none;"></td>
-                    <td id="del-button" style="text-align: center; font-weight: bold; background-color:rgb(207, 207, 207); cursor: pointer;">
-                        <button style="all: unset; cursor: pointer;">DEL</button>
+                    <td colspan="10" style="border: none;"></td>
+                    <td id="del-button">
+                        DEL
                     </td>                    
-                    <td id="importer-button" style="text-align: center; font-weight: bold; background-color:rgb(207, 207, 207); cursor: pointer;">
-                        <button style="all: unset; cursor: pointer;">IMPORTER</button>
-                    </td>
                     
                 </tr>
             </tfoot>
@@ -93,6 +92,18 @@
             <div id="video-container"></div>
         </div>
     </div>
+
+    <!-- Custom Popup Modal -->
+<!-- Custom Popup Modal -->
+<div id="link-popup" class="popup">
+    <p id="popup-message">Her er dit delbare link:</p>
+    <input id="popup-link" type="text" readonly>
+    <button id="close-popup" class="popup-button">LUK</button>
+</div>
+<!-- Overlay -->
+<div id="popup-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 999;"></div>
+
+
 <!-- Firebase App (Core) -->
 <script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app-compat.js"></script>
 

@@ -187,19 +187,22 @@ function observeProductImages() {
         }
     });
 }
+
+
 // Firebase configuration object (from your Firebase Console)
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyAaG3e2QZBDZ3RQXbsSBCyd_p6rr2slAUU",
+    authDomain: "krudtlisterino-4c2fd.firebaseapp.com",
+    projectId: "krudtlisterino-4c2fd",
+    storageBucket: "krudtlisterino-4c2fd.appspot.com",
+    messagingSenderId: "507187923147",
+    appId: "1:507187923147:web:228082a4c6ff7f78bd334e",
+    measurementId: "G-JNGY9S942W"
 };
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
+const db = firebase.firestore(); // Initialize Firestore
 
 /**
  * Save data to Firestore under a specific code.
@@ -209,7 +212,7 @@ const db = firebase.firestore();
 async function saveData(code, data) {
     try {
         await db.collection('sharedLists').doc(code).set(data);
-        console.log(`Data successfully saved under code: ${code}`);
+        console.log(`Data successfully saved under code: ${code}`, data); // Debugging
     } catch (error) {
         console.error('Error saving data:', error);
         alert('Failed to save data. Please try again.');
@@ -220,52 +223,149 @@ async function saveData(code, data) {
  * Generate a shareable link with a unique 6-character code
  * and save localStorage data under this code.
  */
-document.getElementById('del-button').addEventListener('click', async function () {
-    const randomCode = Math.random().toString(36).substring(2, 8); // Generate 6-character code
-    const data = { ...localStorage }; // Clone all localStorage data
+document.addEventListener('DOMContentLoaded', () => {
+    const delButton = document.getElementById('del-button');
 
-    if (Object.keys(data).length === 0) {
-        alert('No data in localStorage to share.');
+    if (!delButton) {
+        console.error('DEL button not found.');
         return;
     }
 
-    try {
-        await saveData(randomCode, data);
-        const shareableLink = `${window.location.origin}/${randomCode}`;
-        alert(`Shareable link created: ${shareableLink}`);
-    } catch (error) {
-        console.error('Error during DEL button process:', error);
-    }
+    delButton.addEventListener('click', async function () {
+        const randomCode = Math.random().toString(36).substring(2, 8); // Generate 6-character code
+        const data = { ...localStorage }; // Clone all localStorage data
+
+        if (Object.keys(data).length === 0) {
+            alert('No data in localStorage to share.');
+            return;
+        }
+
+        try {
+            await saveData(randomCode, data);
+            const shareableLink = `${window.location.origin}/liste.html#${randomCode}`; // Use hash in URL
+
+            // Show the custom popup with the link
+            showPopup(shareableLink);
+        } catch (error) {
+            console.error('Error during DEL button process:', error);
+        }
+    });
 });
 
 /**
- * Load shared data from Firestore based on the code in the URL
+ * Show the custom popup with the generated link.
+ * @param {string} link - The generated shareable link.
+ */
+function showPopup(link) {
+    const popup = document.getElementById('link-popup');
+    const popupLink = document.getElementById('popup-link');
+    const overlay = document.getElementById('popup-overlay');
+    const closeButton = document.getElementById('close-popup');
+
+    // Set link value
+    popupLink.value = link;
+
+    // Show popup and overlay
+    popup.style.display = 'block';
+    overlay.style.display = 'block';
+
+    // Copy link to clipboard automatically
+    popupLink.select();
+    document.execCommand('copy');
+
+    closeButton.addEventListener('click', () => {
+        popup.style.display = 'none';
+        overlay.style.display = 'none';
+    });
+}
+
+/**
+ * Load shared data from Firestore based on the code in the URL hash
  * and populate localStorage.
  */
 async function loadSharedData() {
-    const code = window.location.pathname.substring(1); // Extract 6-character code from URL
-    if (!code) {
-        console.log('No share code in the URL.');
+    const code = window.location.hash.substring(1); // Extract code from URL hash
+
+    if (code.length !== 6) {
+        console.log('No valid 6-character code found in the URL hash.');
+        displayDefaultState(); // Display default state if no valid hash
         return;
     }
+
+    console.log(`Attempting to load data for code: ${code}`); // Debugging
 
     try {
         const doc = await db.collection('sharedLists').doc(code).get();
         if (doc.exists) {
             const data = doc.data();
+            console.log('Data loaded:', data); // Debugging
+
+            // Populate localStorage with the fetched data
             for (const [key, value] of Object.entries(data)) {
-                localStorage.setItem(key, value); // Restore data into localStorage
+                localStorage.setItem(key, value);
             }
-            alert('Data successfully loaded!');
-            window.location.href = 'liste.html'; // Redirect to the list page
+
+            displayDataOnPage(data); // Display loaded data directly on the page
+
+            // Clean URL by removing the hash
+            history.replaceState(null, '', 'liste.html');
+
+            // Force full page reload after data display to ensure formatting
+            setTimeout(() => {
+                window.location.reload();
+            }, 50); // Adjust the delay if necessary
         } else {
             alert('No data found for this code.');
+            displayDefaultState(); // Show default if no data found
+            console.log(`No document found for code: ${code}`); // Debugging
         }
     } catch (error) {
         console.error('Error loading shared data:', error);
         alert('Failed to load data. Please try again later.');
+        displayDefaultState(); // Fallback in case of error
     }
 }
 
-// Automatically attempt to load shared data when the page loads
+/**
+ * Display a default state on the page when no hash or data is present.
+ */
+function displayDefaultState() {
+    const listContainer = document.getElementById('list-container');
+    if (!listContainer) {
+        console.error('List container not found.');
+        return;
+    }
+
+    listContainer.innerHTML = '<p>No data available. Add items to your list and generate a link to share.</p>';
+}
+
+/**
+ * Display loaded data on the `liste.html` page.
+ * @param {object} data - The data to display.
+ */
+function displayDataOnPage(data) {
+    const listContainer = document.getElementById('list-container');
+
+    if (!listContainer) {
+        console.error('List container not found.');
+        return;
+    }
+
+    listContainer.innerHTML = ''; // Clear existing content
+
+    // Render each item in a structured format (e.g., list or table)
+    const list = document.createElement('ul');
+    for (const [key, value] of Object.entries(data)) {
+        const item = document.createElement('li');
+        item.textContent = `${key}: ${value}`;
+        list.appendChild(item);
+    }
+
+    listContainer.appendChild(list);
+}
+
+// Automatically attempt to load shared data on page load
 window.onload = loadSharedData;
+
+// Listen for hash changes and reload data when the hash changes
+window.addEventListener('hashchange', loadSharedData);

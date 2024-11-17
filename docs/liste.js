@@ -247,26 +247,29 @@ row.appendChild(playButtonCell);
                 quantityCell.appendChild(quantityInput);
                 row.appendChild(quantityCell);
 
-                // Remove button
-                const removeCell = document.createElement('td');
-                removeCell.style.border = 'none';
-                const removeButton = document.createElement('button');
-                removeButton.textContent = '-';
-                removeButton.classList.add('remove-btn');
-                removeButton.dataset.id = product.name;
-                removeButton.addEventListener('click', () => {
-                    selectedProducts = selectedProducts.filter(p => p.id !== product.name);
-                    filteredProducts = filteredProducts.filter(p => p.id !== product.name);
-                    saveData();
-                    displayProducts();
-                    calculateSums();
-                });
-                removeCell.appendChild(removeButton);
-                row.appendChild(removeCell);
+          // Remove button
+            const removeCell = document.createElement('td');
+            removeCell.style.border = 'none';
+            const removeButton = document.createElement('button');
+            removeButton.textContent = '-';
+            removeButton.classList.add('remove-btn');
+            removeButton.dataset.name = product.name; // Use name consistently
 
-                productContainer.appendChild(row);
+            removeButton.addEventListener('click', () => {
+               selectedProducts = selectedProducts.filter(p => p.name !== product.name); // Compare with name
+              filteredProducts = filteredProducts.filter(p => p.name !== product.name); // Compare with name
+              saveData(); // Save updated list
+              displayProducts(); // Re-render products
+             calculateSums(); // Update sums
             });
-        }
+
+            removeCell.appendChild(removeButton);
+            row.appendChild(removeCell);
+
+            productContainer.appendChild(row);
+
+                      });
+                   }
 
         function calculateSums() {
             let totalPrice = 0;
