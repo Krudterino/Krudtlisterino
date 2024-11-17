@@ -1,9 +1,26 @@
+/* Farve profil */
+.ingentingderhedderdether {
+    color: #F7A60C; /* Titles, */
+    color: #496E9E;
+    color: #2F7CDE; /* Titles, */
+    color: #89734A;
+    color: #434F5E;
+    color: #2e3233;
+    color: #e0e0e0;
+}
+
+
 /* General styling */
 body {
     font-family: Arial, sans-serif;
     margin-top: 2.5vw;
     text-align: center;
     overflow-x: hidden; /* Prevent horizontal scrollbars */
+    background-image: url('CocktailSquareBaggrund.png');
+    background-size: cover; /* Ensure the image covers the entire screen */
+    background-position: center center; /* Center the image */
+    background-attachment: fixed; /* Keep the image fixed during scroll */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
 }
 
 .header {
@@ -28,7 +45,7 @@ body {
 
 .nav-button {
     text-decoration: none;
-    background-color: #ddd;
+    background-color: #e0e0e0;
     color: black;
     padding: 0.93vh 1.04vw; /* 10px / 1080, 20px / 1920 */
     border-radius: 0.26vw; /* 5px / 1920 * 100 */
@@ -38,12 +55,13 @@ body {
 }
 
 .nav-button:hover {
-    background-color: #ccc;
+    background-color: #e0e0e0;
+    box-shadow: 0 0 0.2vw #F7A60C; /* 0.2vw = 4px / 1920 */
 }
 
 .nav-button.active {
     background-color: #F7A60C;
-    color: white;
+    color: #e0e0e0;
 }
 
 /* Table styling */
@@ -74,7 +92,7 @@ table {
 
 /* Styling for table headers (th) */
 th {
-    border: 0.20vw solid #ddd; /* 4px / 1920 * 100 */
+    border: 0.1vw solid #2e3233; /* 4px / 1920 * 100 */
     padding: 1vh;
     text-align: left;
     vertical-align: middle;
@@ -89,20 +107,21 @@ th {
 
 /* Styling for table cells (td) */
 td {
-    border: 0.05vw solid #ddd; /* 1px / 1920 * 100 */
-    border-bottom: 0.1vw solid #ddd; /* 2px / 1920 * 100 */
+    border: 0.05vw solid #e0e0e0; /* 1px / 1920 * 100 */
+    border-bottom: 0.1vw solid ##e0e0e0; /* 2px / 1920 * 100 */
     max-width: 5.2vw; /* 100px / 1920 * 100 */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     position: relative;
     transition: all 0.2s ease;
+    color: #e0e0e0;
 }
 
 .tooltip {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.85);
-    color: white;
+    background-color: #2e3233;
+    color: #e0e0e0;
     padding: 0.46vh 0.52vw; /* 5px / 1080, 10px / 1920 */
     border-radius: 0.26vw; /* 2px / 1920 * 100 */
     font-size: 1.25vh; /* 12px / 1080 * 100 */
@@ -121,7 +140,7 @@ td {
 
 .play-btn {
     background-color: #FF0000;
-    color: white;
+    color: #e0e0e0;
     border-radius: 0.25vw;
     border: none;
     cursor: pointer;
@@ -135,7 +154,10 @@ td {
 
 th.play-cell {
     border: none;
-    background: white;
+    background: #e0e0e0;
+    border: none;
+    border-top: 0.1vw solid #2e3233;
+    border-bottom: 0.1vw solid #2e3233;
 }
 
 td.play-button-cell {
@@ -159,7 +181,9 @@ td.image-cell {
 
 th.image-cell {
     border: none;
-    background: white;
+    border-top: 0.1vw solid #2e3233;
+    border-bottom: 0.1vw solid #2e3233;
+    background: #e0e0e0;
 }
 
 .product-image:hover {
@@ -173,7 +197,7 @@ th.image-cell {
 }
 
 th.name-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 9vw; /* 12rem = 192px / 19.2px */
     min-width: 9vw; /* 15.625rem = 250px / 19.2px */
     max-width: 25vw; /* 50rem = 800px / 19.2px */
@@ -181,14 +205,14 @@ th.name-cell {
 }
 
 th.varenr-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 5vw; /* 9.375rem = 150px / 19.2px */
     text-align: center;
     z-index: 10;
 }
 
 th.shop-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 6vw; /* 12rem = 192px / 19.2px */
     min-width: 12vw; /* 15.625rem = 250px / 19.2px */
     max-width: 25vw; /* 50rem = 800px / 19.2px */
@@ -197,7 +221,7 @@ th.shop-cell {
 }
 
 th.type-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 6vw; /* 12rem = 192px / 19.2px */
     min-width: 5vw; /* 15.625rem = 250px / 19.2px */
     max-width: 10vw; /* 50rem = 800px / 19.2px */
@@ -206,14 +230,14 @@ th.type-cell {
 }
 
 th.kaliber-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 4vw; /* 7.5rem = 120px / 19.2px */
     text-align: center;
     z-index: 798;
 }
 
 th.skud-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 6vw; /* 12rem = 192px / 19.2px */
     min-width: 6vw; /* 15.625rem = 250px / 19.2px */
     max-width: 10vw; /* 50rem = 800px / 19.2px */
@@ -222,28 +246,28 @@ th.skud-cell {
 }
 
 th.nem-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 4vw; /* 7.5rem = 120px / 19.2px */
     text-align: center;
     z-index: 10;
 }
 
 th.price-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 9vw;
     text-align: center;
     z-index: 10;
 }
 
 th.artikler-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 3vw; /* 5rem = 80px / 19.2px */
     text-align: center;
     z-index: 10;
 }
 
 th.antal-cell {
-    background-color: #ece8f1;
+    background-color: #e0e0e0;
     width: 3vw; /* 5rem = 80px / 19.2px */
     text-align: center;
     z-index: 10;
@@ -251,12 +275,14 @@ th.antal-cell {
 
 th.add-cell {
     border: none;
-    background: white;
+    border-top: 0.1vw solid #2e3233;
+    border-bottom: 0.1vw solid #2e3233;
+    background: #e0e0e0;
     z-index: 10;
 }
 .sort-symbol {
     cursor: pointer;
-    color: black;
+    color: #2e3233;
     margin-left: 0.16vw; /* 5px / 1920 */
     transition: color 0.3s;
 }
@@ -336,7 +362,7 @@ th.add-cell {
     width: 6.25vw; /* 120px / 1920 */
     padding: 0.46vh; /* 5px / 1080 */
     box-sizing: border-box;
-    background-color: #fff7c7;
+    background-color: #e0e0e0;
     border: 0.05vw solid #F7A60C; /* 1px / 1920 */
 }
 
@@ -365,7 +391,7 @@ th.add-cell {
 }
 
 .dropdown-button {
-    background-color: #fff7c7;
+    background-color: #e0e0e0;
     border: 0.05vw solid #F7A60C;
     padding: 0.46vh 0.52vw;
     cursor: pointer;
@@ -375,8 +401,8 @@ th.add-cell {
 .dropdown-content {
     display: none;
     position: absolute; /* Instead of absolute */
-    background-color: #fff7c7;
-    border: 0.05vw solid #ddd; /* 1px / 1920 */
+    background-color: #e0e0e0;
+    border: 0.05vw solid #e0e0e0; /* 1px / 1920 */
     max-height: 46.3vh; /* 500px / 1080 */
     z-index: 1000;
     padding: 0.46vh; /* 5px / 1080 */
@@ -408,26 +434,30 @@ th.add-cell {
 
 .add-btn:hover {
     background-color: #ffdb3c;
-    color: white;
+    color: #e0e0e0;
+
 }
 
 .add-btn.selected {
     background-color: rgb(231, 231, 231);
-    color: white;
+    color: #e0e0e0;
+    display: none;
 }
 
 .add-btn.selected:hover {
-    background-color: darkred;
-    color: white;
+    background-color: #FF0000;
+    color: #e0e0e0;
+    display: none;
+    
 }
 
 .remove-btn {
-    background-color: rgb(231, 231, 231);
-    color: white;
+    background-color: #FF0000;
+    color: #e0e0e0;
     border: none;
-    padding: 0.46vh 0.52vw; /* 5px / 1080, 10px / 1920 */
+    padding: 0.45vh 0.50vw; /* 5px / 1080, 10px / 1920 */
     cursor: pointer;
-    border-radius: 0.21vh; /* 4px / 1080 */
+    border-radius: 0.20vh; /* 4px / 1080 */
     font-weight: bold;
     margin-left: 0.2vw; /* 5px / 1920 */
     font-size: calc(10px + 0.3vw);
@@ -435,7 +465,7 @@ th.add-cell {
 }
 
 .remove-btn:hover {
-    background-color: darkred;
+    box-shadow: 0 0 0.2vw #F7A60C;
 }
 
 
@@ -460,7 +490,7 @@ th.add-cell {
     background: none;
     width: 36.46vw; /* 70rem = 1120px / 1920 */
     max-width: 90%;
-    box-shadow: 0 0.16vh 0.87vh rgba(0, 0, 0, 0.3); /* 5px / 15px */
+    box-shadow: 0 0.15vh 0.9vh rgba(0, 0, 0, 0.3); /* 5px / 15px */
     text-align: center;
     display: flex;
     align-items: center;
@@ -491,7 +521,7 @@ th.add-cell {
 }
 
 #del-button:hover {
-    box-shadow: 0 0 0.1vw #F7A60C; /* 0.2vw = 4px / 1920 */
+    box-shadow: 0 0 0.2vw #F7A60C; /* 0.2vw = 4px / 1920 */
 }
 
 /* Popup Modal Styles */
@@ -501,10 +531,10 @@ th.add-cell {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #e0e0e0;
     padding: 1.85vh; /* 20px / 1080 */
-    box-shadow: 0 0.37vh 0.74vh rgba(0, 0, 0, 0.2); /* 4px / 8px */
-    border-radius: 0.74vh; /* 8px / 1080 */
+    box-shadow: 0 0.4vh 0.75vh rgba(0, 0, 0, 0.2); /* 4px / 8px */
+    border-radius: 0.75vh; /* 8px / 1080 */
     z-index: 1000;
     text-align: center;
 }
@@ -522,7 +552,7 @@ th.add-cell {
     padding: 0.46vh; /* 5px / 1080 */
     font-size: 1.25vh; /* 14px / 1080 */
     text-align: center;
-    border: 0.05vw solid #ddd; /* 1px / 1920 */
+    border: 0.05vw solid #e0e0e0; /* 1px / 1920 */
     border-radius: 0.37vh; /* 4px / 1080 */
     margin-bottom: 0.93vh; /* 10px / 1080 */
 }
@@ -530,15 +560,15 @@ th.add-cell {
 /* Popup Button */
 .popup-button {
     padding: 0.93vh 1.04vw; /* 10px / 20px */
-    background-color: #007BFF;
-    color: white;
+    background-color: #2F7CDE;
+    color: #e0e0e0;
     border: none;
     border-radius: 0.37vh; /* 4px / 1080 */
     cursor: pointer;
 }
 
 .popup-button:hover {
-    background-color: #0056b3;
+    background-color: #2F7CDE;
 }
 
 /* Overlay Styles */
@@ -549,7 +579,7 @@ th.add-cell {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #2e3233;
     z-index: 999;
 }
 
