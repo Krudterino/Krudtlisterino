@@ -188,7 +188,6 @@ function observeProductImages() {
     });
 }
 
-
 // Firebase configuration object (from your Firebase Console)
 const firebaseConfig = {
     apiKey: "AIzaSyAaG3e2QZBDZ3RQXbsSBCyd_p6rr2slAUU",
@@ -204,25 +203,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore(); // Initialize Firestore
 
-/**
- * Save data to Firestore under a specific code.
- * @param {string} code - The unique 6-character code.
- * @param {object} data - The data to save (localStorage content).
- */
-async function saveData(code, data) {
-    try {
-        await db.collection('sharedLists').doc(code).set(data);
-        console.log(`Data successfully saved under code: ${code}`, data);
-    } catch (error) {
-        console.error('Error saving data:', error);
-        alert('Failed to save data. Please try again.');
-    }
-}
-
-/**
- * Generate a shareable link with a unique 6-character code
- * and save localStorage data under this code.
- */
 document.addEventListener('DOMContentLoaded', () => {
     const delButton = document.getElementById('del-button');
 
@@ -242,13 +222,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             await saveData(randomCode, data);
-            const shareableLink = `${window.location.origin}/liste.html#${randomCode}`;
+            
+            // Generate the shareable link dynamically based on the current URL
+            const currentUrl = window.location.href.split('#')[0]; // Preserve current URL structure
+            const shareableLink = `${currentUrl}#${randomCode}`;
             showPopup(shareableLink);
         } catch (error) {
             console.error('Error during DEL button process:', error);
         }
     });
 });
+
+/**
+ * Save data to Firestore under a specific code.
+ * @param {string} code - The unique 6-character code.
+ * @param {object} data - The data to save (localStorage content).
+ */
+async function saveData(code, data) {
+    try {
+        await db.collection('sharedLists').doc(code).set(data);
+        console.log(`Data successfully saved under code: ${code}`, data);
+    } catch (error) {
+        console.error('Error saving data:', error);
+        alert('Failed to save data. Please try again.');
+    }
+}
 
 /**
  * Show the custom popup with the generated link.
@@ -270,13 +268,9 @@ function showPopup(link) {
     closeButton.addEventListener('click', () => {
         popup.style.display = 'none';
         overlay.style.display = 'none';
-    });
+    }, { once: true }); // Ensure event doesn't stack with each click
 }
 
-/**
- * Load shared data from Firestore based on the code in the URL hash
- * and populate localStorage.
- */
 /**
  * Load shared data from Firestore based on the code in the URL hash
  * and populate localStorage.
