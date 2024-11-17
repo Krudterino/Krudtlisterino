@@ -277,6 +277,10 @@ function showPopup(link) {
  * Load shared data from Firestore based on the code in the URL hash
  * and populate localStorage.
  */
+/**
+ * Load shared data from Firestore based on the code in the URL hash
+ * and populate localStorage.
+ */
 async function loadSharedData() {
     const code = window.location.hash.substring(1); // Extract code from URL hash
 
@@ -296,9 +300,10 @@ async function loadSharedData() {
                 localStorage.setItem(key, value);
             }
 
-            displayDataOnPage(data);
-            history.replaceState(null, '', 'liste.html');
+            displayDataOnPage(data); // Display data immediately
+            history.replaceState(null, '', 'liste.html'); // Clean the URL
 
+            // Reload the page to apply any necessary formatting
             setTimeout(() => {
                 window.location.reload();
             }, 50);
@@ -338,7 +343,7 @@ function displayDataOnPage(data) {
         return;
     }
 
-    listContainer.innerHTML = '';
+    listContainer.innerHTML = ''; // Clear existing content
 
     const list = document.createElement('ul');
     for (const [key, value] of Object.entries(data)) {
@@ -352,4 +357,6 @@ function displayDataOnPage(data) {
 
 // Automatically attempt to load shared data on page load
 window.onload = loadSharedData;
+
+// Reload data if the hash changes (e.g., user navigates back to shared link)
 window.addEventListener('hashchange', loadSharedData);
