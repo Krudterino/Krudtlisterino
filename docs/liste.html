@@ -65,8 +65,13 @@
                 <tr style="height: 20px;"></tr> <!-- Empty row with 50px height -->
                 <tr>
                     <td colspan="9" style="border: none;"></td>
-                    <td id="" style="text-align: center; font-weight: bold; background-color:rgb(207, 207, 207)">IMPORTER</td> <!-- Ser ikke ud teksten kan ændres her -->
-                    <td id="" style="text-align: center; font-weight: bold; background-color:rgb(207, 207, 207)">DEL</td> <!-- Ser ikke ud teksten kan ændres her -->
+                    <td id="del-button" style="text-align: center; font-weight: bold; background-color:rgb(207, 207, 207); cursor: pointer;">
+                        <button style="all: unset; cursor: pointer;">DEL</button>
+                    </td>                    
+                    <td id="importer-button" style="text-align: center; font-weight: bold; background-color:rgb(207, 207, 207); cursor: pointer;">
+                        <button style="all: unset; cursor: pointer;">IMPORTER</button>
+                    </td>
+                    
                 </tr>
             </tfoot>
             <tfoot>
@@ -88,7 +93,11 @@
             <div id="video-container"></div>
         </div>
     </div>
+<!-- Firebase App (Core) -->
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app-compat.js"></script>
 
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore-compat.js"></script>
     <script src="script.js"></script>
     <script src="liste.js"></script>
 </body>

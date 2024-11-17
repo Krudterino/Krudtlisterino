@@ -3,7 +3,7 @@ fetch('products.json')
     .then(response => response.json())
     .then(products => {
         let filteredProducts = [...products];
-        const productsPerPage = 50;
+        const productsPerPage = 2000; //produkter på en side
         let currentPage = 1;
         let sortOrder = {
             price: null, // Can be 'asc', 'desc', or null

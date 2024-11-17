@@ -1,7 +1,7 @@
 /* General styling */
 body {
     font-family: Arial, sans-serif;
-    margin: 25px;
+    margin: 1.5625rem;
     text-align: center;
 }
 
@@ -9,12 +9,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
 }
 
 .nav-buttons {
     display: flex;
-    gap: 15px;
+    gap: 0.9375rem;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -22,9 +23,9 @@ body {
     text-decoration: none;
     background-color: #ddd;
     color: black;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
     transition: background-color 0.3s;
 }
 
@@ -40,71 +41,75 @@ body {
 /* Table styling */
 .table-container {
     margin: 0 auto;
-    width: 80%;
+    width: 100%;
+    max-width: 90vw; /* Slight margin for padding */
+    max-height: 90vh; /* Ensure visibility within viewport height */
     text-align: left;
     white-space: nowrap;
     overflow-y: auto;
-    max-height: 80vh; /* Adjust as needed */
-    margin-bottom: 10px;
+    max-height: 80vh;
+    margin-bottom: 0.625rem;
 }
 
 table {
     border-collapse: separate;
-    border-spacing: 0; /* Prevents gaps between cells */
-    table-layout: fixed; /* Ensures consistent column widths */
-    margin: 15px;
+    border-spacing: 0;
+    table-layout: fixed;
+    margin: 0.9375rem;
+    font-size: calc(0.8vw); /* Dynamically scale text size */
 }
+
 /* Styling for table headers (th) */
 th {
-    border: 4px solid #ddd;
-    padding: 10px;
+    border: 0.25rem solid #ddd;
+    padding: 0.625rem;
     text-align: left;
     vertical-align: middle;
-    white-space: nowrap; /* Prevents wrapping in headers */
+    white-space: nowrap;
     margin: 0;
     box-sizing: border-box;
-    position: sticky; /* Freeze the header */
-    top: 0; /* Keeps it at the top when scrolling */
-    z-index: 500; /* Ensure it's above other content */
+    position: sticky;
+    top: 0;
+    z-index: 500;
 }
 
 /* Styling for table cells (td) */
-/* Ensure cells are truncated by default */
 td {
-    border: 1px solid #ddd;
-    border-bottom: 2px solid #ddd;
-    max-width: 100px; /* Adjust width as needed */
-    overflow: hidden; /* Hide overflowing content */
-    white-space: nowrap; /* Prevent wrapping */
-    text-overflow: ellipsis; /* Display "..." for overflowed text */
-    position: relative; /* For positioning during hover */
-    transition: all 0.2s ease; /* Smooth transition for hover */
-    
+    border: 0.0625rem solid #ddd;
+    border-bottom: 0.125rem solid #ddd;
+    max-width: 6.25rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: relative;
+    transition: all 0.2s ease;
 }
+
 .tooltip {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.85);
     color: white;
-    padding: 5px 10px;
-    border-radius: 2px;
-    font-size: 12px;
+    padding: 0.3125rem 0.625rem;
+    border-radius: 0.125rem;
+    font-size: 0.75rem;
     white-space: nowrap;
-    pointer-events: none; /* Tooltip should not block mouse events */
+    pointer-events: none;
     z-index: 1000;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.1s ease-in-out;
 }
+
 .play-button-cell {
-    width: 60px; /* Adjust as needed for button size */
+    width: 3.75rem;
     text-align: center;
 }
 
 .play-btn {
     background-color: #FF0000;
     color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: 0.3125rem 0.625rem;
+    border-radius: 0.3125rem;
     border: none;
     cursor: pointer;
 }
@@ -112,115 +117,128 @@ td {
 .play-btn:hover {
     background-color: #F7A60C;
 }
+
 th.play-cell {
-    border:none;
+    border: none;
     background: white;
 }
+
 td.play-button-cell {
-    border:none;
+    border: none;
 }
+
 .product-image {
     width: 100%;
     height: 100%;
-    width: 55px;
-    height: 55px;
-    object-fit: cover; /* Ensure the image covers the cell without distortion */
-    display: block; /* Removes inline block spacing */
+    width: 3.4375rem;
+    height: 3.4375rem;
+    object-fit: cover;
+    display: block;
     transition: transform 0.3s ease-in-out, position 0.3s ease-in-out;
-    cursor: pointer; /* Indicates image is clickable */
-/*    border-inline: 5px solid red;*/
+    cursor: pointer;
 }
+
 td.image-cell {
-    width: 55px;
-    padding: 0; /* Ensure no extra spacing */
-    box-sizing: border-box; /* Include padding/border within width/height */
+    width: 3.4375rem;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 th.image-cell {
     border: none;
     background: white;
 }
-/* The hover effect should ensure the image stands out */
+
 .product-image:hover {
-    z-index: 1000; /* Bring enlarged image to the top layer */
-    pointer-events: auto; /* Ensures the image remains interactive */
+    z-index: 1000;
+    pointer-events: auto;
 }
+
 .enlarged-image {
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-    transform-origin: top left; /* Makes the image enlarge from its original position */
+    box-shadow: 0 0.125rem 0.125rem rgba(0, 0, 0, 0.3);
+    transform-origin: top left;
 }
 
 th.name-cell {
-    background-color: #ece8f1; /* Example for Name column */
-    min-width: 250px;
-    max-width: 800px;
+    background-color: #ece8f1;
+    min-width: 15.625rem;
+    max-width: 50rem;
     text-align: center;
 }
 
 th.varenr-cell {
-    background-color: #ece8f1; /* Example for Varenr column */
-    width: 150px;
+    background-color: #ece8f1;
+    width: 9.375rem;
     text-align: center;
-    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 10;
 }
 
 th.shop-cell {
-    background-color: #ece8f1; /* Example for Shop column */
-    width: 250px;
+    background-color: #ece8f1;
+    width: 12rem;
     text-align: center;
-    z-index: 50; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 50;
 }
 
 th.type-cell {
-    background-color: #ece8f1; /* Example for Shop column */
-    width: 120px;
+    background-color: #ece8f1;
+    width: 7.5rem;
     text-align: center;
-    z-index: 49; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 49;
 }
+
 th.kaliber-cell {
-    background-color: #ece8f1; /* Example for Shop column */
-    width: 120px;
+    background-color: #ece8f1;
+    width: 7.5rem;
     text-align: center;
-    z-index: 48; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 48;
 }
+
 th.skud-cell {
-    background-color: #ece8f1; /* Example for Shop column */
-    width: 80px;
+    background-color: #ece8f1;
+    width: 5rem;
     text-align: center;
-    z-index: 47; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 47;
 }
+
 th.nem-cell {
-    background-color: #ece8f1; /* Example for Shop column */
-    width: 120px;
+    background-color: #ece8f1;
+    width: 7.5rem;
     text-align: center;
-    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 10;
 }
+
 th.price-cell {
-    background-color: #ece8f1; /* Example for Shop column */
-    width: 150px;
+    background-color: #ece8f1;
+    width: 20rem;
     text-align: center;
-    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 10;
 }
+
 th.artikler-cell {
-    background-color: #ece8f1; /* Example for Shop column */
-    width: 80px;
+    background-color: #ece8f1;
+    width: 5rem;
     text-align: center;
-    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 10;
 }
+
 th.antal-cell {
-    background-color: #ece8f1; /* Example for Shop column */
-    width: 80px;
+    background-color: #ece8f1;
+    width: 5rem;
     text-align: center;
-    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 10;
 }
+
 th.add-cell {
-    border:none;
+    border: none;
     background: white;
-    z-index: 10; /* Sørger for at dropdown menu ikke bliver blokeret */
+    z-index: 10;
 }
+
 .sort-symbol {
     cursor: pointer;
     color: black;
-    margin-left: 5px;
+    margin-left: 0.3125rem;
     transition: color 0.3s;
 }
 
@@ -228,53 +246,54 @@ th.add-cell {
     color: grey;
 }
 
-/* Input styling for search inputs */
-
 .price-input-wrapper {
-    width: 100%; /* Make wrapper take up the full width of the cell */
+    width: 100%;
     display: flex;
-    justify-content: center; /* Adjust alignment of content inside */
+    justify-content: center;
     align-items: center;
     box-sizing: border-box;
 }
 
 .price-input-wrapper input {
-    width: calc(100% - 10px); /* Adjust input width to make room for the suffix */
+    width: calc(100% - 0.625rem);
     text-align: center;
-    box-sizing: border-box; /* Makes padding count towards width */
+    box-sizing: border-box;
 }
+
 .price-suffix {
     position: absolute;
     padding-right: 5%;
-    pointer-events: none; /* Prevent interaction with the suffix */
-    font-size: 14px; /* Match the input text size */
-    color: #555; /* Match or customize color */
+    pointer-events: none;
+    font-size: 0.875rem;
+    color: #555;
 }
+
 .search-input-wrapper {
     display: flex;
-    justify-content: center;  /* Centers horizontally */
-    align-items: center;      /* Centers vertically */
-    width: 100%;              /* Takes the full width of the container */
-    margin: 10px 0;           /* Optional margin for spacing */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 0.625rem 0;
 }
 
 .search-input {
-    text-align: center;       /* Align text within the input field */
-    width: 120px;               /* Set width for the input itself, can be adjusted as needed */
-    padding: 5px;
+    text-align: center;
+    width: 7.5rem;
+    padding: 0.3125rem;
     box-sizing: border-box;
     background-color: #fff7c7;
-    border: 1px solid #F7A60C;
+    border: 0.0625rem solid #F7A60C;
 }
+
 .search-input:focus {
     outline: none;
-    box-shadow: 0 0 5px #F7A60C; /* Add a glow effect */
+    box-shadow: 0 0 0.3125rem #F7A60C;
 }
-/* Styling til varenr søgefelt */
+
 .small-input {
-    width: 60px;
+    width: 3.75rem;
 }
-/* Styling for price and quantity inputs */
+
 .price-input-wrapper, .quantity-input-wrapper {
     display: inline-flex;
     align-items: center;
@@ -283,44 +302,43 @@ th.add-cell {
 }
 
 .price-input, .quantity-input {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
-    width: 60px; /* Fixed width for consistency */
+    padding: 0.3125rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    width: 3.75rem;
     box-sizing: border-box;
 }
 
-/* Remove up/down arrows for number inputs on price input */
 .price-input::-webkit-outer-spin-button,
 .price-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 .price-input {
-    -moz-appearance: textfield; /* Remove arrows in Firefox */
+    -moz-appearance: textfield;
 }
 
 .price-suffix {
     position: absolute;
-    right: 5px;
+    right: 0.3125rem;
     top: 50%;
     transform: translateY(-50%);
     pointer-events: none;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
-/* Styling for parentheses number */
 .parentheses-price {
-    margin-left: 5px;
-    font-size: 12px;
+    margin-left: 0.3125rem;
+    font-size: 0.75rem;
     color: grey;
 }
-/* Style for custom price input */
+
 .custom-price {
     font-style: italic;
 }
-/* Dropdown styling */
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -328,66 +346,74 @@ th.add-cell {
 
 .dropdown-button {
     background-color: #fff7c7;
-    border: 1px solid #F7A60C;
-    padding: 5px 10px;
+    border: 0.0625rem solid #F7A60C;
+    padding: 0.3125rem 0.625rem;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 0.75rem;
 }
 
 .dropdown-content {
     display: none;
     position: absolute;
     background-color: #fff7c7;
-    border: 1px solid #ddd;
-    max-height: 500px;
+    border: 0.0625rem solid #ddd;
+    max-height: 31.25rem;
     overflow-y: auto;
     z-index: 1000;
-    padding: 5px;
+    padding: 0.3125rem;
     text-align: left;
 }
+
 .dropdown-text {
     opacity: 50%;
 }
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
 .add-btn {
     background-color: #F7A60C;
     color: white;
     border: none;
-    margin-left: 5px;
-    padding: 5px 10px;
+    margin-left: 0.3125rem;
+    padding: 0.3125rem 0.625rem;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 0.625rem;
 }
 
 .add-btn:hover {
     background-color: #ffdb3c;
     color: white;
 }
+
 .add-btn.selected {
-    background-color: rgb(231, 231, 231); /* Indicates selected product */
+    background-color: rgb(231, 231, 231);
     color: white;
 }
+
 .add-btn.selected:hover {
-    background-color: darkred; /* Indicates selected product */
+    background-color: darkred;
     color: white;
 }
+
 .remove-btn {
     background-color: rgb(231, 231, 231);
     color: white;
     border: none;
-    padding: 5px 10px;
+    padding: 0.3125rem 0.625rem;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 0.25rem;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 0.625rem;
 }
+
 .remove-btn:hover {
     background-color: darkred;
 }
+
 /* Modal container - youtube */
 .modal {
     padding-top: 5%;
@@ -403,26 +429,24 @@ th.add-cell {
     justify-content: center;
 }
 
-/* Modal content  - youtube */
 .modal-content {
     position: relative;
     margin: auto;
     background: none;
-    width: 1120px;
+    width: 70rem;
     max-width: 90%;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0.3125rem 0.9375rem rgba(0, 0, 0, 0.3);
     text-align: center;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-/* Close button  - youtube */
 .close-button {
     position: absolute;
-    right: 10px;
-    top: 10px;
-    font-size: 28px;
+    right: 0.625rem;
+    top: 0.625rem;
+    font-size: 1.75rem;
     font-weight: bold;
     color: #b9b9b9;
     cursor: pointer;
@@ -434,94 +458,61 @@ th.add-cell {
 }
 
 #product-container td:nth-child(3) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    padding: 0.625rem;
     font-weight: bold;
 }
+
 #product-container td:nth-child(4) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    padding: 0.625rem;
     text-align: center;
     color: rgb(104, 104, 104);
 }
-#product-container td:nth-child(5) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
-#product-container td:nth-child(6) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
-#product-container td:nth-child(7) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
-#product-container td:nth-child(8) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
-#product-container td:nth-child(9) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: right;
-}
-#product-container td:nth-child(10) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
+
+#product-container td:nth-child(5),
+#product-container td:nth-child(6),
+#product-container td:nth-child(7),
+#product-container td:nth-child(8),
+#product-container td:nth-child(9),
+#product-container td:nth-child(10),
 #product-container td:nth-child(11) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    padding: 0.625rem;
     text-align: center;
 }
-
-
-
-
 
 #list-container td:nth-child(3) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    padding: 0.625rem;
     font-weight: bold;
 }
-#list-container td:nth-child(4) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-    color: rgb(104, 104, 104);
-}
-#list-container td:nth-child(5) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
-#list-container td:nth-child(6) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
-#list-container td:nth-child(7) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
-#list-container td:nth-child(8) {
-    padding: 0px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
-#list-container td:nth-child(9) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
-#list-container td:nth-child(10) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
-    text-align: center;
-}
+
+#list-container td:nth-child(4),
+#list-container td:nth-child(5),
+#list-container td:nth-child(6),
+#list-container td:nth-child(7),
+#list-container td:nth-child(8),
+#list-container td:nth-child(9),
+#list-container td:nth-child(10),
 #list-container td:nth-child(11) {
-    padding: 10px; /* Apply padding only to the 4th column in tbody */
+    padding: 0.625rem;
     text-align: center;
 }
 
-
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
     .table-container {
         width: 100%;
+        max-width: 95%;
     }
 
     th, td {
-        padding: 8px;
+        padding: 0.5rem;
     }
+}
+#scalable-container {
+    width: 100vw; /* Full viewport width */
+    height: auto;
+    max-height: 100vh; /* Prevent overflow beyond the viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }

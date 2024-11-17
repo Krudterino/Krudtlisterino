@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div id="scalable-container">
     <div class="header">
         <div class="nav-buttons">
             <a href="index.html" class="nav-button active" id="katalog-button">Katalog</a>
@@ -54,7 +55,7 @@
                     <th class="skud-cell">Skud
                         <span class="sort-symbol" id="sort-skud">⇅</span>
                     </th>
-                    <th class="price-cell">Pris
+                    <th class="price-cell">Vejl. Pris
                         <span class="sort-symbol" id="sort-price">⇅</span>
                     </th>
                     <th class="nem-cell">NEM
@@ -76,10 +77,15 @@
             <span class="close-button" id="close-modal">&times;</span>
             <div id="video-container"></div>
         </div>
+    </div>
     </div>    
     
     <script src="script.js"></script>
     <script src="index.js"></script>
-    
+<!-- Firebase App (Core) -->
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-app-compat.js"></script>
+
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.3.1/firebase-firestore-compat.js"></script>
 </body>
 </html>
