@@ -6,7 +6,7 @@
     color: #89734A;
     color: #434F5E;
     color: #2e3233;
-    color: #e0e0e0;
+    color: #e5e5e5;
 }
 
 
@@ -45,7 +45,7 @@ body {
 
 .nav-button {
     text-decoration: none;
-    background-color: #e0e0e0;
+    background-color: #e5e5e5;
     color: black;
     padding: 0.93vh 1.04vw; /* 10px / 1080, 20px / 1920 */
     border-radius: 0.26vw; /* 5px / 1920 * 100 */
@@ -55,13 +55,13 @@ body {
 }
 
 .nav-button:hover {
-    background-color: #e0e0e0;
+    background-color: #e5e5e5;
     box-shadow: 0 0 0.2vw #F7A60C; /* 0.2vw = 4px / 1920 */
 }
 
 .nav-button.active {
     background-color: #F7A60C;
-    color: #e0e0e0;
+    color: #e5e5e5;
 }
 
 /* Table styling */
@@ -92,7 +92,7 @@ table {
 
 /* Styling for table headers (th) */
 th {
-    border: 0.1vw solid #2e3233; /* 4px / 1920 * 100 */
+    border: 0.1vw solid #434F5E; /* 4px / 1920 * 100 */
     padding: 1vh;
     text-align: left;
     vertical-align: middle;
@@ -102,26 +102,28 @@ th {
     position: sticky;
     top: 0;
     z-index: 500;
+    background-color: #2e3233;
+    color:#e5e5e5;
     
 }
 
 /* Styling for table cells (td) */
 td {
-    border: 0.05vw solid #e0e0e0; /* 1px / 1920 * 100 */
-    border-bottom: 0.1vw solid ##e0e0e0; /* 2px / 1920 * 100 */
+    border: 0.05vw solid #434F5E; /* 1px / 1920 * 100 */
+    border-bottom: 0.1vw solid #434F5E; /* 2px / 1920 * 100 */
     max-width: 5.2vw; /* 100px / 1920 * 100 */
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
     position: relative;
     transition: all 0.2s ease;
-    color: #e0e0e0;
+    color: #e5e5e5;
 }
 
 .tooltip {
     position: absolute;
     background-color: #2e3233;
-    color: #e0e0e0;
+    color: #e5e5e5;
     padding: 0.46vh 0.52vw; /* 5px / 1080, 10px / 1920 */
     border-radius: 0.26vw; /* 2px / 1920 * 100 */
     font-size: 1.25vh; /* 12px / 1080 * 100 */
@@ -140,7 +142,7 @@ td {
 
 .play-btn {
     background-color: #FF0000;
-    color: #e0e0e0;
+    color: #e5e5e5;
     border-radius: 0.25vw;
     border: none;
     cursor: pointer;
@@ -155,10 +157,9 @@ td {
 
 th.play-cell {
     border: none;
-    background: #e0e0e0;
-    border: none;
-    border-top: 0.1vw solid #2e3233;
-    border-bottom: 0.1vw solid #2e3233;
+    border-left: 0.1vw solid #434F5E;
+    border-top: 0.1vw solid #434F5E;
+    border-bottom: 0.1vw solid #434F5E;
 }
 
 td.play-button-cell {
@@ -181,9 +182,8 @@ td.image-cell {
 
 th.image-cell {
     border: none;
-    border-top: 0.1vw solid #2e3233;
-    border-bottom: 0.1vw solid #2e3233;
-    background: #e0e0e0;
+    border-top: 0.1vw solid #434F5E;
+    border-bottom: 0.1vw solid #434F5E;
 }
 
 .product-image:hover {
@@ -197,7 +197,6 @@ th.image-cell {
 }
 
 th.name-cell {
-    background-color: #e0e0e0;
     width: 9vw; /* 12rem = 192px / 19.2px */
     min-width: 9vw; /* 15.625rem = 250px / 19.2px */
     max-width: 25vw; /* 50rem = 800px / 19.2px */
@@ -205,14 +204,12 @@ th.name-cell {
 }
 
 th.varenr-cell {
-    background-color: #e0e0e0;
     width: 5vw; /* 9.375rem = 150px / 19.2px */
     text-align: center;
     z-index: 10;
 }
 
 th.shop-cell {
-    background-color: #e0e0e0;
     width: 6vw; /* 12rem = 192px / 19.2px */
     min-width: 12vw; /* 15.625rem = 250px / 19.2px */
     max-width: 25vw; /* 50rem = 800px / 19.2px */
@@ -221,7 +218,6 @@ th.shop-cell {
 }
 
 th.type-cell {
-    background-color: #e0e0e0;
     width: 6vw; /* 12rem = 192px / 19.2px */
     min-width: 5vw; /* 15.625rem = 250px / 19.2px */
     max-width: 10vw; /* 50rem = 800px / 19.2px */
@@ -230,14 +226,12 @@ th.type-cell {
 }
 
 th.kaliber-cell {
-    background-color: #e0e0e0;
     width: 4vw; /* 7.5rem = 120px / 19.2px */
     text-align: center;
     z-index: 798;
 }
 
 th.skud-cell {
-    background-color: #e0e0e0;
     width: 6vw; /* 12rem = 192px / 19.2px */
     min-width: 6vw; /* 15.625rem = 250px / 19.2px */
     max-width: 10vw; /* 50rem = 800px / 19.2px */
@@ -246,28 +240,24 @@ th.skud-cell {
 }
 
 th.nem-cell {
-    background-color: #e0e0e0;
     width: 4vw; /* 7.5rem = 120px / 19.2px */
     text-align: center;
     z-index: 10;
 }
 
 th.price-cell {
-    background-color: #e0e0e0;
     width: 9vw;
     text-align: center;
     z-index: 10;
 }
 
 th.artikler-cell {
-    background-color: #e0e0e0;
     width: 3vw; /* 5rem = 80px / 19.2px */
     text-align: center;
     z-index: 10;
 }
 
 th.antal-cell {
-    background-color: #e0e0e0;
     width: 3vw; /* 5rem = 80px / 19.2px */
     text-align: center;
     z-index: 10;
@@ -275,15 +265,15 @@ th.antal-cell {
 
 th.add-cell {
     border: none;
-    border-top: 0.1vw solid #2e3233;
-    border-bottom: 0.1vw solid #2e3233;
-    background: #e0e0e0;
+    border-top: 0.1vw solid #434F5E;
+    border-bottom: 0.1vw solid #434F5E;
+    border-right: 0.1vw solid #434F5E;
     padding-right: 1.5vw;
     z-index: 10;
 }
 .sort-symbol {
     cursor: pointer;
-    color: #2e3233;
+    color: #434F5E;
     margin-left: 0.16vw; /* 5px / 1920 */
     transition: color 0.3s;
 }
@@ -323,7 +313,7 @@ th.add-cell {
 
 .price-input, .quantity-input {
     padding: 0.46vh; /* Maintain comfortable padding */
-    border: 0.05vw solid #ccc; /* Border size remains consistent */
+    border: 0.05vw solid #e5e5e5; /* Border size remains consistent */
     border-radius: 0.37vh; /* Slightly larger for better aesthetics */
     font-size: calc(5px + 0.3vw);
     width: 3.65vw; /* Slightly wider for usability (70px / 1920) */
@@ -338,6 +328,9 @@ th.add-cell {
 
 .price-input {
     -moz-appearance: textfield;
+    background-color:#434F5E;
+    border-color:#e5e5e5;
+    color: #e5e5e5;
 }
 
 .price-suffix {
@@ -347,6 +340,7 @@ th.add-cell {
     transform: translateY(-50%);
     pointer-events: none;
     font-size: 1.5vh; /* Match suffix font size */
+    color: #e5e5e5;
 }
 
 .search-input-wrapper {
@@ -363,8 +357,10 @@ th.add-cell {
     width: 6.25vw; /* 120px / 1920 */
     padding: 0.46vh; /* 5px / 1080 */
     box-sizing: border-box;
-    background-color: #e0e0e0;
+    background-color: #434F5E;
     border: 0.05vw solid #F7A60C; /* 1px / 1920 */
+    color: #e5e5e5;
+    font-weight: bold;
 }
 
 .search-input:focus {
@@ -389,12 +385,14 @@ th.add-cell {
 .dropdown {
     position: relative;
     display: inline-block;
-    color: #2e3233;
+    color: #e5e5e5;
     box-sizing: border-box;
 }
 
 .dropdown-button {
-    background-color: #e0e0e0;
+    background-color: #434F5E;
+    color: #e5e5e5;
+    font-weight: bold;
     border: 0.05vw solid #F7A60C;
     padding: 0.46vh 0.52vw;
     cursor: pointer;
@@ -404,8 +402,8 @@ th.add-cell {
 .dropdown-content {
     display: none;
     position: absolute; /* Instead of absolute */
-    background-color: #e0e0e0;
-    border: 0.05vw solid #e0e0e0; /* 1px / 1920 */
+    background-color: #434F5E;
+    border: 0.05vw solid #e5e5e5; /* 1px / 1920 */
     max-height: 46.3vh; /* 500px / 1080 */
     z-index: 1000;
     padding: 0.46vh; /* 5px / 1080 */
@@ -443,28 +441,27 @@ th.add-cell {
 
 .add-btn.selected {
     background-color: rgb(231, 231, 231);
-    color: #e0e0e0;
+    color: #e5e5e5;
     display: none;
 }
 
 .add-btn.selected:hover {
     background-color: #FF0000;
-    color: #e0e0e0;
+    color: #e5e5e5;
     display: none;
     
 }
 
 .remove-btn {
     background-color: #FF0000;
-    color: #e0e0e0;
+    color: #e5e5e5;
     border: none;
-    padding: 0.45vh 0.50vw; /* 5px / 1080, 10px / 1920 */
     cursor: pointer;
     border-radius: 0.20vh; /* 4px / 1080 */
     font-weight: bold;
     margin-left: 0.2vw; /* 5px / 1920 */
     font-size: calc(10px + 0.3vw);
-    padding: 0.1vh 0.30vw;
+    padding: 0.1vh 0.40vw;
 }
 
 .remove-btn:hover {
@@ -534,7 +531,7 @@ th.add-cell {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #e0e0e0;
+    background-color: #e5e5e5;
     padding: 1.85vh; /* 20px / 1080 */
     box-shadow: 0 0.4vh 0.75vh rgba(0, 0, 0, 0.2); /* 4px / 8px */
     border-radius: 0.75vh; /* 8px / 1080 */
@@ -555,7 +552,7 @@ th.add-cell {
     padding: 0.46vh; /* 5px / 1080 */
     font-size: 1.25vh; /* 14px / 1080 */
     text-align: center;
-    border: 0.05vw solid #e0e0e0; /* 1px / 1920 */
+    border: 0.05vw solid #e5e5e5; /* 1px / 1920 */
     border-radius: 0.37vh; /* 4px / 1080 */
     margin-bottom: 0.93vh; /* 10px / 1080 */
 }
@@ -564,7 +561,7 @@ th.add-cell {
 .popup-button {
     padding: 0.93vh 1.04vw; /* 10px / 20px */
     background-color: #2F7CDE;
-    color: #e0e0e0;
+    color: #e5e5e5;
     border: none;
     border-radius: 0.37vh; /* 4px / 1080 */
     cursor: pointer;
@@ -583,6 +580,7 @@ th.add-cell {
     width: 100%;
     height: 100%;
     background-color: #2e3233;
+    opacity: 50%
     z-index: 999;
 }
 

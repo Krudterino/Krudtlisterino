@@ -1,3 +1,5 @@
+document.addEventListener('DOMContentLoaded', () => {
+
 // Load product data from JSON
 fetch('products.json')
     .then(response => response.json())
@@ -325,3 +327,5 @@ row.appendChild(playButtonCell);
         applyFiltersAndSearch();
     })
     .catch(error => console.error('Error loading products:', error));
+
+}); // Luk til DOM loading
