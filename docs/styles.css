@@ -1,7 +1,6 @@
 /* Farve profil */
 .ingentingderhedderdether {
     color: #F7A60C; /* Titles, */
-    color: #496E9E;
     color: #2F7CDE; /* Titles, */
     color: #89734A;
     color: #434F5E;
@@ -9,6 +8,13 @@
     color: #e5e5e5;
 }
 
+html {
+    background-image: url('CocktailSquareBaggrund.png');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
 
 /* General styling */
 body {
@@ -16,11 +22,7 @@ body {
     margin-top: 2.5vw;
     text-align: center;
     overflow-x: hidden; /* Prevent horizontal scrollbars */
-    background-image: url('CocktailSquareBaggrund.png');
-    background-size: cover; /* Ensure the image covers the entire screen */
-    background-position: center center; /* Center the image */
-    background-attachment: fixed; /* Keep the image fixed during scroll */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
+    background: none; /* Chrome ting */
 }
 
 .header {
@@ -167,8 +169,8 @@ td.play-button-cell {
 }
 
 .product-image {
-    width: 2.9vw; /* 55px / 1920 * 100 */
-    height: 2.9vw; /* 55px / 1920 * 100 */
+    width: 3.6vw; /* 55px / 1920 * 100 */
+    height: 3.6vw; /* 55px / 1920 * 100 */
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease-in-out, position 0.3s ease-in-out;
@@ -176,7 +178,7 @@ td.play-button-cell {
 }
 
 td.image-cell {
-    width: 2.9vw; /* 55px / 1920 */
+    width: 3.6vw; /* 55px / 1920 */
     padding: 0;
 }
 
@@ -273,13 +275,15 @@ th.add-cell {
 }
 .sort-symbol {
     cursor: pointer;
-    color: #434F5E;
+    color: rgba(229, 229, 229, 0.5); /* rgba for opacity på font alene */
+    border: 0.05vw solid #F7A60C;
     margin-left: 0.16vw; /* 5px / 1920 */
     transition: color 0.3s;
+    background:#434F5E;
 }
 
 .sort-symbol:hover {
-    color: grey;
+    box-shadow: 0 0 0.25vw #F7A60C;
 }
 
 .price-input-wrapper {
@@ -315,9 +319,11 @@ th.add-cell {
     padding: 0.46vh; /* Maintain comfortable padding */
     border: 0.05vw solid #e5e5e5; /* Border size remains consistent */
     border-radius: 0.37vh; /* Slightly larger for better aesthetics */
-    font-size: calc(5px + 0.3vw);
     width: 3.65vw; /* Slightly wider for usability (70px / 1920) */
+    height: 1.5vw;
     box-sizing: border-box;
+    background-color:#434F5E;
+    color: #e5e5e5;
 }
 
 .price-input::-webkit-outer-spin-button,
@@ -363,9 +369,15 @@ th.add-cell {
     font-weight: bold;
 }
 
+/* Customize placeholder text */
+::placeholder {
+    color: #e5e5e5; /* Change to your preferred color */
+    opacity: 50%;  /* Set to 1 for full visibility */
+}
+
 .search-input:focus {
     outline: none;
-    box-shadow: 0 0 0.26vw #F7A60C; /* 5px / 1920 */
+    box-shadow: 0 0 0.25vw #F7A60C; /* 5px / 1920 */
 }
 
 .small-input {
@@ -375,7 +387,7 @@ th.add-cell {
 .parentheses-price {
     margin-left: 0.16vw; /* 5px / 1920 */
     font-size: 1.15vh; /* 12px / 1080 */
-    color: grey;
+    color: #e5e5e5;
 }
 
 .custom-price {
@@ -419,7 +431,7 @@ th.add-cell {
 .dropdown-button:focus + .dropdown-content {
     display: block; /* Make dropdown visible */
     overflow: visible;
-    box-shadow: 0 0 0.2vw #F7A60C;
+    box-shadow: 0 0 0.25vw #F7A60C;
 }
 
 .add-btn {
@@ -435,7 +447,7 @@ th.add-cell {
 }
 
 .add-btn:hover {
-    box-shadow: 0 0 0.2vw #F7A60C;
+    box-shadow: 0 0 0.25vw #F7A60C;
 
 }
 
@@ -465,52 +477,66 @@ th.add-cell {
 }
 
 .remove-btn:hover {
-    box-shadow: 0 0 0.2vw #F7A60C;
+    box-shadow: 0 0 0.25vw #F7A60C;
 }
 
-
-/* Modal container - youtube */
 .modal {
-    padding-top: 5%;
-    display: none;
+    display: none; /* Hidden by default */
     position: fixed;
-    z-index: 1000;
-    left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
+    left: 0;
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
     background-color: rgba(0, 0, 0, 0.7);
     align-items: center;
     justify-content: center;
+    z-index: 1000;
 }
 
 .modal-content {
+    width: 60vw; /* Width is 60% of viewport width */
+    aspect-ratio: 16 / 9; /* Automatically sets height based on 16:9 ratio */
+    max-width: 90vw; /* Cap width to prevent overly large modal */
+    max-height: 90vh; /* Prevent it from exceeding viewport height */
+    background: transparent;
     position: relative;
-    margin: auto;
-    background: none;
-    width: 36.46vw; /* 70rem = 1120px / 1920 */
-    max-width: 90%;
-    box-shadow: 0 0.15vh 0.9vh rgba(0, 0, 0, 0.3); /* 5px / 15px */
-    text-align: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+}
+
+#video-container {
+    width: 100%; /* Full width of modal content */
+    height: 100%; /* Full height of modal content (enforcing 16:9) */
+}
+
+.modal-content iframe {
+    width: 100%; /* Fill container width */
+    height: 100%; /* Fill container height */
+    border: none; /* No borders for iframe */
 }
 
 .close-button {
     position: absolute;
-    right: 0.33vw; /* 0.625rem = 10px / 1920 */
-    top: 0.93vh; /* 0.625rem = 10px / 1080 */
-    font-size: 1.5vh; /* 1.75rem = 28px / 1080 */
-    font-weight: bold;
-    color: #b9b9b9;
+    top: 1vh;
+    right: 1vw;
+    font-size: 2.5vh;
+    color: white;
     cursor: pointer;
+    z-index: 1001;
 }
 
-.close-button:hover,
-.close-button:focus {
-    color: rgb(228, 228, 228);
+.close-button:hover {
+    color: #ff0000; /* Optional hover effect */
 }
+
+
+.close-button:hover {
+    color: #ff0000; /* Hover effect for close button */
+}
+
+
+.close-button:hover {
+    color: #ff0000; /* Optional: Color change on hover */
+}
+
 
 #del-button {
     text-align: center;
@@ -521,19 +547,19 @@ th.add-cell {
 }
 
 #del-button:hover {
-    box-shadow: 0 0 0.2vw #F7A60C; /* 0.2vw = 4px / 1920 */
+    box-shadow: 0 0 0.25vw #F7A60C; /* 0.2vw = 4px / 1920 */
 }
 
 /* Popup Modal Styles */
 #link-popup {
     display: none;
     position: fixed;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #e5e5e5;
+    background-color: #2e3233;
     padding: 1.85vh; /* 20px / 1080 */
-    box-shadow: 0 0.4vh 0.75vh rgba(0, 0, 0, 0.2); /* 4px / 8px */
+    box-shadow: 0 0.4vh 0.75vh rgba(0, 0, 0, 0.5); /* 4px / 8px */
     border-radius: 0.75vh; /* 8px / 1080 */
     z-index: 1000;
     text-align: center;
@@ -541,20 +567,30 @@ th.add-cell {
 
 #popup-message {
     margin: 0;
-    font-size: 1.50vh; /* 16px / 1080 */
-    margin-bottom: 0.93vh; /* 10px / 1080 */
-    width: 20vw;
+    font-size: 2.50vh; /* 16px / 1080 */
+    margin-bottom: 2vh; /* 10px / 1080 */
+    width: 30vw;
     font-weight: bold;
+    color: #e5e5e5;
+}
+#popup-message-paragraf {
+    margin: 0;
+    font-size: 2.50vh; /* 16px / 1080 */
+    margin-bottom: 2vh; /* 10px / 1080 */
+    width: 30vw;
+    color: #e5e5e5;
 }
 
 #popup-link {
-    width: 100%;
-    padding: 0.46vh; /* 5px / 1080 */
-    font-size: 1.25vh; /* 14px / 1080 */
+    width: 95%;
+    padding: 0.5vh; /* 5px / 1080 */
+    font-size: 2.5vh; /* 14px / 1080 */
     text-align: center;
     border: 0.05vw solid #e5e5e5; /* 1px / 1920 */
     border-radius: 0.37vh; /* 4px / 1080 */
-    margin-bottom: 0.93vh; /* 10px / 1080 */
+    margin-bottom: 2vh; /* 10px / 1080 */
+    background-color:#434F5E;
+    color: #e5e5e5;
 }
 
 /* Popup Button */
@@ -568,7 +604,7 @@ th.add-cell {
 }
 
 .popup-button:hover {
-    background-color: #2F7CDE;
+    box-shadow: 0 0 0.25vw #2F7CDE;
 }
 
 /* Overlay Styles */
@@ -580,7 +616,7 @@ th.add-cell {
     width: 100%;
     height: 100%;
     background-color: #2e3233;
-    opacity: 50%
+    opacity: 50%;
     z-index: 999;
 }
 

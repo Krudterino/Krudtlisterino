@@ -299,18 +299,18 @@ row.appendChild(playButtonCell);
         function toggleSortOrder(symbolElement, key) {
             if (sortOrder[key] === 'asc') {
                 sortOrder[key] = 'desc';
-                symbolElement.style.color = 'blue';
+                symbolElement.style.color = '#2F7CDE';
             } else if (sortOrder[key] === 'desc') {
                 sortOrder[key] = null;
-                symbolElement.style.color = 'black';
+                symbolElement.style.color = 'rgba(229, 229, 229, 0.5)';
             } else {
                 sortOrder[key] = 'asc';
                 symbolElement.style.color = '#F7A60C';
             }
 
-            if (key !== 'price') sortPriceSymbol.style.color = 'black';
-            if (key !== 'nem') sortNemSymbol.style.color = 'black';
-            if (key !== 'artikler') sortArtiklerSymbol.style.color = 'black';
+            if (key !== 'price') sortPriceSymbol.style.color = 'rgba(229, 229, 229, 0.5)';
+            if (key !== 'nem') sortNemSymbol.style.color = 'rgba(229, 229, 229, 0.5)';
+            if (key !== 'artikler') sortArtiklerSymbol.style.color = 'rgba(229, 229, 229, 0.5)';
 
             applySorting();
         }

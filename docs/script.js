@@ -65,42 +65,52 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 function showVideoModal(videoUrl) {
+    if (!videoUrl) return; // Avoid loading without a valid video URL
+
     const modal = document.getElementById('video-modal');
     const videoContainer = document.getElementById('video-container');
 
-    // Create an iframe with the embedded YouTube URL
+    // Clear previous iframe (if any)
+    videoContainer.innerHTML = '';
+
+    // Dynamically create iframe for YouTube video
     const iframe = document.createElement('iframe');
-    iframe.width = '1120';
-    iframe.height = '630';
-    iframe.src = videoUrl.replace("watch?v=", "embed/"); // Converts YouTube URL to embeddable format
+    iframe.src = videoUrl.replace("watch?v=", "embed/"); // Convert YouTube link to embeddable format
     iframe.title = 'YouTube video player';
-    iframe.frameBorder = '0';
     iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
     iframe.allowFullscreen = true;
 
-    // Clear previous content and add the iframe
-    videoContainer.innerHTML = '';
+    // Append iframe into container
     videoContainer.appendChild(iframe);
 
     // Show the modal
-    modal.style.display = 'block';
+    modal.style.display = 'flex'; // Flex ensures proper centering
 }
 
-// Event listener to close the modal
-document.getElementById('close-modal').addEventListener('click', () => {
-    const modal = document.getElementById('video-modal');
-    modal.style.display = 'none';
-    document.getElementById('video-container').innerHTML = ''; // Clear the video content when closing
-});
+// Event listener for close button
+document.getElementById('close-modal').addEventListener('click', closeModal);
 
-// Close the modal if clicking outside of the modal content
+// Close modal on background click
 window.addEventListener('click', (event) => {
     const modal = document.getElementById('video-modal');
     if (event.target === modal) {
-        modal.style.display = 'none';
-        document.getElementById('video-container').innerHTML = ''; // Clear the video content when closing
+        closeModal();
     }
 });
+
+// Close modal when Escape key is pressed
+window.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
+
+function closeModal() {
+    const modal = document.getElementById('video-modal');
+    modal.style.display = 'none'; // Hide modal
+    document.getElementById('video-container').innerHTML = ''; // Clear iframe
+}
+
 
 
 
@@ -217,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = { ...localStorage }; // Clone all localStorage data
 
         if (Object.keys(data).length === 0) {
-            alert('No data in localStorage to share.');
+            alert('Du har ikke noget i din liste.');
             return;
         }
 

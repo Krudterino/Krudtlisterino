@@ -254,20 +254,20 @@ row.appendChild(addCell);
         function toggleSortOrder(symbolElement, key) {
             if (sortOrder[key] === 'asc') {
                 sortOrder[key] = 'desc';
-                symbolElement.style.color = 'blue'; // High to Low (Blue)
+                symbolElement.style.color = '#2F7CDE'; // High to Low (Blue)
             } else if (sortOrder[key] === 'desc') {
                 sortOrder[key] = null;
-                symbolElement.style.color = 'black'; // Reset (Default Color)
+                symbolElement.style.color = 'rgba(229, 229, 229, 0.5)'; // Reset (Default Color)
             } else {
                 sortOrder[key] = 'asc';
-                symbolElement.style.color = '#F7A60C'; // Low to High (Green)
+                symbolElement.style.color = '#F7A60C'; // Low to High
             }
 
             // Reset the colors of other sort symbols
-            if (key !== 'price') sortPriceSymbol.style.color = 'black';
-            if (key !== 'nem') sortNemSymbol.style.color = 'black';
-            if (key !== 'artikler') sortArtiklerSymbol.style.color = 'black';
-            if (key !== 'skud') sortSkudSymbol.style.color = 'black'; // Reset Skud color
+            if (key !== 'price') sortPriceSymbol.style.color = 'rgba(229, 229, 229, 0.5)';
+            if (key !== 'nem') sortNemSymbol.style.color = 'rgba(229, 229, 229, 0.5)';
+            if (key !== 'artikler') sortArtiklerSymbol.style.color = 'rgba(229, 229, 229, 0.5)';
+            if (key !== 'skud') sortSkudSymbol.style.color = 'rgba(229, 229, 229, 0.5)'; // Reset Skud color
 
             applyFiltersAndSorting();
         }
