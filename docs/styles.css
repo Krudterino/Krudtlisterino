@@ -1,6 +1,6 @@
 /* Farve profil */
 .ingentingderhedderdether {
-    color:  ; /* Titles, */
+    color: #F7A60C; /* Titles, */
     color: #2F7CDE; /* Titles, */
     color: #89734A;
     color: #434F5E;
@@ -307,6 +307,11 @@ th.add-cell {
     pointer-events: none;
     font-size: calc(10px + 0.3vw); /* Slightly increased (14px / 1080) for better visibility */
     color: #2e3233;
+    right: 0.26vw; /* Adjusted for balance (5px / 1920) */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5vh; /* Match suffix font size */
+    color: #e5e5e5;
 }
 
 .price-input-wrapper, .quantity-input-wrapper {
@@ -339,16 +344,6 @@ th.add-cell {
     color: #e5e5e5;
 }
 
-.price-suffix {
-    position: absolute;
-    right: 0.26vw; /* Adjusted for balance (5px / 1920) */
-    top: 50%;
-    transform: translateY(-50%);
-    pointer-events: none;
-    font-size: 1.5vh; /* Match suffix font size */
-    color: #e5e5e5;
-}
-
 .search-input-wrapper {
     display: flex;
     justify-content: center;
@@ -367,6 +362,53 @@ th.add-cell {
     border: 0.05vw solid #F7A60C; /* 1px / 1920 */
     color: #e5e5e5;
     font-weight: bold;
+}
+.shop-input-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.shop-input-wrapper input {
+    width: 100%; /* Adjusted for consistent width */
+    text-align: center;
+    font-size: calc(10px + 0.3vw); /* Updated for better readability (16px / 1080) */
+    box-sizing: border-box;
+}
+
+.shop-input-wrapper, .quantity-input-wrapper {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.shop-input, .quantity-input {
+    padding: 0.46vh; /* Maintain comfortable padding */
+    border: 0.05vw solid #e5e5e5; /* Border size remains consistent */
+    border-radius: 0.37vh; /* Slightly larger for better aesthetics */
+    width: 3.65vw; /* Slightly wider for usability (70px / 1920) */
+    height: 1.5vw;
+    box-sizing: border-box;
+    background-color:#434F5E;
+    color: #e5e5e5;
+}
+
+.shop-input::-webkit-outer-spin-button,
+.shop-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.shop-input {
+    -moz-appearance: textfield;
+    background-color:#434F5E;
+    border-color:#e5e5e5;
+    color: #e5e5e5;
+}
+.custom-shop {
+    font-style: italic;
 }
 
 /* Customize placeholder text */
@@ -618,6 +660,18 @@ th.add-cell {
     background-color: #2e3233;
     opacity: 50%;
     z-index: 999;
+}
+
+#billede-button {
+    text-align: center;
+    font-weight: bold;
+    background-color: #F7A60C;
+    cursor: pointer;
+    color: white;
+}
+
+#billede-button:hover {
+    box-shadow: 0 0 0.25vw #F7A60C; /* 0.2vw = 4px / 1920 */
 }
 
 #product-container td:nth-child(3) {
