@@ -63,17 +63,27 @@ fetch('products.json')
         });
 
         // Populate Kaliber filter checkboxes
-        kalibers.forEach(kaliber => {
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.value = kaliber;
-            checkbox.classList.add('kaliber-filter');
-            const label = document.createElement('label');
-            label.textContent = `${kaliber} mm`;
-            kaliberFiltersContainer.appendChild(checkbox);
-            kaliberFiltersContainer.appendChild(label);
-            kaliberFiltersContainer.appendChild(document.createElement('br'));
-        });
+// Populate Kaliber filter checkboxes (hardcoded options)
+const kaliberOptions = [
+    { value: 20, title: 'Mindst 20 mm' },
+    { value: 25, title: 'Mindst 25 mm' },
+    { value: 30, title: 'Mindst 30 mm' },
+];
+
+kaliberOptions.forEach(option => {
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.value = option.value;
+    checkbox.classList.add('kaliber-filter');
+
+    const label = document.createElement('label');
+    label.textContent = option.title;
+
+    kaliberFiltersContainer.appendChild(checkbox);
+    kaliberFiltersContainer.appendChild(label);
+    kaliberFiltersContainer.appendChild(document.createElement('br'));
+});
+
 
         // Function to apply filters and sorting
         function applyFiltersAndSorting() {
@@ -92,16 +102,21 @@ fetch('products.json')
                 const matchesShop = selectedShops.length === 0 || selectedShops.includes(product.shop);
                 const matchesType = selectedTypes.length === 0 || selectedTypes.includes(product.type);
                 
-                // Adjusted logic for matching Kaliber
-                const matchesKaliber = selectedKalibers.length === 0 || selectedKalibers.some(selected => {
-                    if (product.kaliber.includes('-')) {
-                        const [min, max] = product.kaliber.split('-').map(Number);
-                        const selectedValue = parseInt(selected);
-                        return selectedValue >= min && selectedValue <= max;
-                    } else {
-                        return product.kaliber === selected;
-                    }
-                });
+// Adjusted logic for matching Kaliber with hardcoded ranges
+const matchesKaliber = selectedKalibers.length === 0 || selectedKalibers.some(selected => {
+    const selectedValue = parseInt(selected);
+    const productKaliber = parseInt(product.kaliber);
+
+    if (isNaN(productKaliber)) return false; // Skip if kaliber is not a valid number
+
+    // Match based on ranges
+    if (selectedValue === 20) return productKaliber >= 20;
+    if (selectedValue === 25) return productKaliber >= 25;
+    if (selectedValue === 30) return productKaliber >= 30;
+
+    return false;
+});
+
 
                 return matchesName && matchesVarenr && matchesShop && matchesType && matchesKaliber;
             });

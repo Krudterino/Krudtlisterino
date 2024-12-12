@@ -481,16 +481,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
-    
-    
-    
-    
-    
-    
-    
-    
-
-    
     }); // Luk til DOM loading
     
     
