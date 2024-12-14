@@ -242,7 +242,7 @@ th.skud-cell {
 }
 
 th.nem-cell {
-    width: 4vw; /* 7.5rem = 120px / 19.2px */
+    width: 5vw; /* 7.5rem = 120px / 19.2px */
     text-align: center;
     z-index: 10;
 }
