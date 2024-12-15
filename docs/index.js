@@ -126,8 +126,12 @@ const matchesKaliber = selectedKalibers.length === 0 || selectedKalibers.some(se
                 filteredProducts.sort((a, b) => sortOrder.price === 'asc' ? a.price - b.price : b.price - a.price);
             }
             if (sortOrder.nem) {
-                filteredProducts.sort((a, b) => sortOrder.nem === 'asc' ? a.nem - b.nem : b.nem - a.nem);
-            }
+                filteredProducts.sort((a, b) => {
+                    const nemA = parseFloat(a.nem) || 0; // Parse NEM as a float, default to 0 if invalid
+                    const nemB = parseFloat(b.nem) || 0; // Parse NEM as a float, default to 0 if invalid
+                    return sortOrder.nem === 'asc' ? nemA - nemB : nemB - nemA;
+                });
+            }            
             if (sortOrder.artikler) {
                 filteredProducts.sort((a, b) => sortOrder.artikler === 'asc' ? a.artikler - b.artikler : b.artikler - a.artikler);
             }
